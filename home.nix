@@ -20,7 +20,10 @@
         user = "koutyuke";
       };
     };
-    ignores = [ ".DS_Store" ];
+    ignores = [
+      ".DS_Store"
+      "todo.me.md"
+    ];
   };
 
   programs.home-manager.enable = true;
