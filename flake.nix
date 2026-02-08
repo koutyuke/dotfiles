@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
+    # flake-parts.url = "github:hercules-ci/flake-parts";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,42 +13,72 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nix-darwin, nixpkgs, home-manager, ... }:
-  let
-    hostname = "koutyuke";
-    username = "kousuke";
-    system = "aarch64-darwin";
-    hostConfigPath = ./configuration.nix;
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    let
+      hostname = "koutyuke";
+      username = "kousuke";
+      system = "aarch64-darwin";
+      hostConfigPath = ./configuration.nix;
 
-    mkDarwinSystem = {
-      system,
-      username,
-      hostname,
-      hostConfigPath
-    }: nix-darwin.lib.darwinSystem {
-      inherit system;
-      modules = [
-        hostConfigPath
-        home-manager.darwinModules.home-manager
+      # treefmt-nix (nix fmt) configuration
+      mkTreefmt =
+        system:
+        (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} {
+          projectRootFile = "flake.nix";
+          programs.nixfmt.enable = true;
+
+        }).config.build.wrapper;
+
+      mkDarwinSystem =
         {
-          users.users.${username}.home = "/Users/${username}";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hm-bak";
-        }
-      ];
-      specialArgs = {
-        inherit inputs self system;
+          system,
+          username,
+          hostname,
+          hostConfigPath,
+        }:
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            hostConfigPath
+            home-manager.darwinModules.home-manager
+            {
+              users.users.${username}.home = "/Users/${username}";
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "hm-bak";
+            }
+          ];
+          specialArgs = {
+            inherit inputs self system;
+          };
+        };
+
+    in
+    {
+      formatter.${system} = mkTreefmt system;
+
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#koutyuke
+      darwinConfigurations."${hostname}" = mkDarwinSystem {
+        inherit
+          hostname
+          username
+          system
+          hostConfigPath
+          ;
       };
     };
-
-  in {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#koutyuke
-    darwinConfigurations."${hostname}" = mkDarwinSystem {
-      inherit hostname username system hostConfigPath;
-    };
-  };
 }

@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   nix.enable = false;
@@ -9,6 +10,7 @@
     git
   ];
 
+  # Using DetermineSystems/nix-installer to install Nix
   programs.zsh.enable = true;
 
   system = {

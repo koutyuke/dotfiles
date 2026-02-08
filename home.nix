@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.username = "kousuke";
   home.homeDirectory = "/Users/kousuke";
 
   home.stateVersion = "25.11";
-  home.packages = [];
-
+  home.packages = [ ];
 
   programs.git = {
     enable = true;
@@ -22,7 +22,6 @@
     };
     ignores = [ ".DS_Store" ];
   };
-
 
   programs.home-manager.enable = true;
 }
