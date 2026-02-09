@@ -1,11 +1,9 @@
 { inputs, pkgs, ... }:
 {
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfree = true;
 
   # Using DetermineSystems/nix-installer to install Nix
   nix.enable = false;
-
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim
