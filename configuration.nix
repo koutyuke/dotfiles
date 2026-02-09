@@ -2,7 +2,10 @@
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  # Using DetermineSystems/nix-installer to install Nix
   nix.enable = false;
+
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -10,13 +13,34 @@
     git
   ];
 
-  # Using DetermineSystems/nix-installer to install Nix
-  programs.zsh.enable = true;
+  programs = {
+    bash = {
+      enable = true;
+    };
+    zsh = {
+      enable = true;
+    };
+  };
 
   system = {
     stateVersion = 6;
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
   };
 
-  home-manager.users.kousuke = ./home.nix;
+  users.users = {
+    kousuke = {
+      name = "kousuke";
+      home = "/Users/kousuke";
+    };
+  };
+
+  home-manager.users = {
+    kousuke = ./home.nix;
+  };
+
+  networking = {
+    computerName = "koutyuke's MacBook Pro";
+    hostName = "koutyuke";
+    localHostName = "koutyuke";
+  };
 }

@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default";
-    # flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,66 +19,42 @@
     };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nix-darwin,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
-    let
-      hostname = "koutyuke";
-      username = "kousuke";
-      system = "aarch64-darwin";
-      hostConfigPath = ./configuration.nix;
-
-      # treefmt-nix (nix fmt) configuration
-      mkTreefmt =
-        system:
-        (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} {
+  outputs = inputs @ { self, flake-parts, nix-darwin, home-manager, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "aarch64-darwin" ];
+      imports = with inputs; [
+        treefmt-nix.flakeModule
+      ];
+      perSystem = { pkgs, ... }: {
+        treefmt = {
           projectRootFile = "flake.nix";
-          programs.nixfmt.enable = true;
 
-        }).config.build.wrapper;
+          programs = {
 
-      mkDarwinSystem =
-        {
-          system,
-          username,
-          hostname,
-          hostConfigPath,
-        }:
-        nix-darwin.lib.darwinSystem {
-          inherit system;
+            # nix
+            nixpkgs-fmt = {
+              enable = true;
+            };
+          };
+        };
+      };
+      flake = {
+        darwinConfigurations.koutyuke = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
           modules = [
-            hostConfigPath
+            ./configuration.nix
             home-manager.darwinModules.home-manager
             {
-              users.users.${username}.home = "/Users/${username}";
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-bak";
             }
           ];
           specialArgs = {
-            inherit inputs self system;
+            inherit inputs self;
+            system = "aarch64-darwin";
           };
         };
-
-    in
-    {
-      formatter.${system} = mkTreefmt system;
-
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#koutyuke
-      darwinConfigurations."${hostname}" = mkDarwinSystem {
-        inherit
-          hostname
-          username
-          system
-          hostConfigPath
-          ;
       };
     };
 }
