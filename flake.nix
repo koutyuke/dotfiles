@@ -19,25 +19,34 @@
     };
   };
 
-  outputs = inputs @ { self, flake-parts, nix-darwin, home-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      flake-parts,
+      nix-darwin,
+      home-manager,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-darwin" ];
       imports = with inputs; [
         treefmt-nix.flakeModule
       ];
-      perSystem = { pkgs, ... }: {
-        treefmt = {
-          projectRootFile = "flake.nix";
+      perSystem =
+        { pkgs, ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
 
-          programs = {
-
-            # nix
-            nixpkgs-fmt = {
-              enable = true;
+            programs = {
+              # nix
+              nixpkgs-fmt = {
+                enable = true;
+                package = pkgs.nixfmt-rfc-style;
+              };
             };
           };
         };
-      };
       flake = {
         darwinConfigurations.koutyuke = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
