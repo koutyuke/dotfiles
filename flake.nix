@@ -31,22 +31,8 @@
       systems = [ "aarch64-darwin" ];
       imports = with inputs; [
         treefmt-nix.flakeModule
+        ./flakes/treefmt.nix
       ];
-      perSystem =
-        { pkgs, ... }:
-        {
-          treefmt = {
-            projectRootFile = "flake.nix";
-
-            programs = {
-              # nix
-              nixpkgs-fmt = {
-                enable = true;
-                package = pkgs.nixfmt-rfc-style;
-              };
-            };
-          };
-        };
       flake = {
         darwinConfigurations.koutyuke = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
