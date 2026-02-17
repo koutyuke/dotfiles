@@ -41,4 +41,6 @@
     hostName = "koutyuke";
     localHostName = "koutyuke";
   };
+
+  time.timeZone = "Asia/Tokyo";
 }
