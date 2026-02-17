@@ -9,7 +9,7 @@ _: {
           # nix
           nixpkgs-fmt = {
             enable = true;
-            package = pkgs.nixfmt-rfc-style;
+            package = pkgs.nixfmt;
           };
         };
       };
