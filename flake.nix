@@ -32,24 +32,7 @@
       imports = with inputs; [
         treefmt-nix.flakeModule
         ./flakes/treefmt.nix
+        ./flakes/host.nix
       ];
-      flake = {
-        darwinConfigurations.koutyuke = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = [
-            ./configuration.nix
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "hm-bak";
-            }
-          ];
-          specialArgs = {
-            inherit inputs self;
-            system = "aarch64-darwin";
-          };
-        };
-      };
     };
 }
