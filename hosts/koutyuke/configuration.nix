@@ -1,5 +1,8 @@
 { inputs, pkgs, ... }:
 {
+  imports = [
+    ../../modules/darwin/system-defaults
+  ];
   nixpkgs.config.allowUnfree = true;
 
   # Using DetermineSystems/nix-installer to install Nix
@@ -21,6 +24,7 @@
   };
 
   system = {
+    primaryUser = "kousuke";
     stateVersion = 6;
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
   };
@@ -33,7 +37,7 @@
   };
 
   home-manager.users = {
-    kousuke = ../users/kousuke/home.nix;
+    kousuke = ./users/kousuke/home.nix;
   };
 
   networking = {
