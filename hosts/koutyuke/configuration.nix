@@ -33,7 +33,7 @@
   };
 
   home-manager.users = {
-    kousuke = ./home.nix;
+    kousuke = ../users/kousuke/home.nix;
   };
 
   networking = {
