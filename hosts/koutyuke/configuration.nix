@@ -29,6 +29,8 @@
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
   };
 
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   users.users = {
     kousuke = {
       name = "kousuke";
