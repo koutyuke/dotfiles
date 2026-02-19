@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    ../../modules/darwin/system
+    ../../modules/darwin
   ];
   nixpkgs.config.allowUnfree = true;
 
