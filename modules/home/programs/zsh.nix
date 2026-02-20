@@ -15,6 +15,8 @@
       plugins = [
         "git"
         "copypath"
+        "sudo"
+        "extract"
       ];
     };
 
