@@ -146,7 +146,12 @@
         symbol = "";
         style = "bg:#2A6F97";
         format = "[ $symbol ($version) ]($style)";
-        detect_files = [ "package.json" ".node-version" "!bunfig.toml" "!bun.lockb" ];
+        detect_files = [
+          "package.json"
+          ".node-version"
+          "!bunfig.toml"
+          "!bun.lockb"
+        ];
       };
 
       nim = {
