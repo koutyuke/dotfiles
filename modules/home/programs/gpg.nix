@@ -6,11 +6,10 @@
     mutableTrust = true;
   };
 
-  home.file.".gnupg/gpg-agent.conf" = {
-    text = ''
-      pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
-      default-cache-ttl 600
-      max-cache-ttl 7200
-    '';
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry_mac;
+    defaultCacheTtl = 600;
+    maxCacheTtl = 7200;
   };
 }
