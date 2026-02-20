@@ -12,6 +12,10 @@
       init = {
         defaultBranch = "main";
       };
+
+      ghq = {
+        root = "~/Desktop/projects";
+      };
     };
 
     ignores = [
