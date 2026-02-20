@@ -11,7 +11,7 @@
 
   users.users = {
     kousuke.home = "/Users/kousuke";
-    
+
   };
 
   home-manager.users = {
