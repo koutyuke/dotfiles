@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["json", "yaml", "markdown", "nix"],
+  "ignorePaths": [
+    "node_modules/",
+    "dist/",
+    "build/",
+    "coverage/",
+    "out/",
+    "public/",
+    "tmp/",
+    "temp/",
+    ".*"
+  ],
+  "words": ["trackpad"]
+}
