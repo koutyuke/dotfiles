@@ -9,10 +9,25 @@
 
   home.stateVersion = "25.11";
 
-  home.packages = with pkgs; [
-    awscli2
-    databricks-cli
-  ];
+  home.packages =
+    with pkgs;
+    [
+      awscli2
+      databricks-cli
+    ]
+    ++ (with pkgs.brewCasks; [
+      # aldente
+      # aws-vpn-client
+      # cleanmymac
+      # discord
+      # drawio
+      # istat-menus
+      # microsoft-auto-update
+      # microsoft-teams
+      # nordlayer
+      # session-manager-plugin
+      # typora
+    ]);
 
   programs = {
     git = {
