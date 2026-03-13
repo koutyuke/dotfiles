@@ -8,6 +8,10 @@ in
       koutyuke = mkDarwinSystem {
         system = "aarch64-darwin";
         hostConfiguration = ../hosts/koutyuke/configuration.nix;
+        overlays = [
+          inputs.brew-nix.overlays.default
+          (import ../overlays/brew-casks.nix)
+        ];
       };
     };
   };
