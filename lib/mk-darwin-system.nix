@@ -4,6 +4,7 @@
   hostConfiguration,
   modules ? [ ],
   specialArgs ? { },
+  overlays ? [ ],
 }:
 assert builtins.pathExists hostConfiguration;
 inputs.nix-darwin.lib.darwinSystem {
@@ -11,6 +12,13 @@ inputs.nix-darwin.lib.darwinSystem {
   modules = [
     hostConfiguration
     inputs.home-manager.darwinModules.home-manager
+    inputs.brew-nix.darwinModules.default
+    (
+      { ... }:
+      {
+        nixpkgs.overlays = overlays;
+      }
+    )
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
@@ -18,6 +26,7 @@ inputs.nix-darwin.lib.darwinSystem {
     }
   ]
   ++ modules;
+
   specialArgs = specialArgs // {
     inherit inputs system;
   };
