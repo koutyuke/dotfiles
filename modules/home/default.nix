@@ -1,7 +1,7 @@
 {
   imports = [
-    ./packages.nix
-    ./apps.nix
     ./programs
+    ./apps.nix
+    ./packages.nix
   ];
 }
