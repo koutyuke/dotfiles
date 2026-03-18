@@ -1,8 +1,9 @@
 { ... }:
 {
   imports = [
-    ./apps.nix
-    ./base.nix
-    ./defaults.nix
+    ./homebrew.nix
+    ./packages.nix
+    ./programs.nix
+    ./system.nix
   ];
 }
