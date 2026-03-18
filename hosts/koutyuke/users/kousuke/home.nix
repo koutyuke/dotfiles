@@ -14,19 +14,11 @@
     [
       awscli2
       databricks-cli
+      ssm-session-manager-plugin
     ]
     ++ (with pkgs.brewCasks; [
-      # aldente
-      # aws-vpn-client
-      # cleanmymac
-      # discord
-      # drawio
-      # istat-menus
-      # microsoft-auto-update
-      # microsoft-teams
-      # nordlayer
-      # session-manager-plugin
-      # typora
+      discord
+      typora
     ]);
 
   programs = {

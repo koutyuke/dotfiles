@@ -22,4 +22,12 @@
     hostName = "koutyuke";
     localHostName = "koutyuke";
   };
+
+  environment.systemPackages = with pkgs.brewCasks; [
+    aldente
+    aws-vpn-client
+    cleanmymac
+    istat-menus
+    microsoft-teams
+  ];
 }
