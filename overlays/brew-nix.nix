@@ -14,5 +14,9 @@ final: prev: {
         hash = "sha256-nujha0SzBWI0KaODB91muIdL+nTtuFiwQ3rWKs3bdLY=";
       };
     });
+    dbvisualizer = prev.brewCasks.dbvisualizer.overrideAttrs (_: {
+      # 7zz extracts the DMG into DbVisualizer/DbVisualizer.app/ instead of DbVisualizer.app/
+      sourceRoot = "DbVisualizer/DbVisualizer.app";
+    });
   };
 }

@@ -27,30 +27,19 @@
       uv
     ]
     ++ (with pkgs.brewCasks; [
-      # appcleaner
-      # arc
-      # azookey
-      # canva
-      # chatgpt
+      canva
+      chatgpt
       clipy
-      # cursor
-      # dbvisualizer
-      # devtoys
-      # figma
-      # ghostty
-      # jordanbaird-ice
-      # karabiner-elements
-      # keyboardcleantool
-      # monitorcontrol
-      # mos
-      # notion
-      # notunes
-      # orbstack
-      # postman
-      # raycast
-      # spotify
-      # the-unarchiver
-      # visual-studio-code
-      # zoom
+      cursor
+      dbvisualizer
+      devtoys
+      figma
+      jordanbaird-ice
+      keyboardcleantool
+      notion
+      notunes
+      postman
+      spotify
+      the-unarchiver
     ]);
 }
