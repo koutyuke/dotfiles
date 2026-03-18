@@ -29,7 +29,6 @@ final: prev: {
       };
     });
 
-
     # brew-nix's default unpackPhase uses zcat (gzip), but Teams' .pkg Payload is pbzx-compressed.
     microsoft-teams = prev.brewCasks.microsoft-teams.overrideAttrs (oldAttrs: {
       nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ prev.pbzx ];
