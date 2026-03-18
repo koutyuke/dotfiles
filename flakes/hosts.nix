@@ -10,7 +10,7 @@ in
         hostConfiguration = ../hosts/koutyuke/configuration.nix;
         overlays = [
           inputs.brew-nix.overlays.default
-          (import ../overlays/brew-casks.nix)
+          (import ../overlays/brew-nix.nix)
         ];
       };
     };
