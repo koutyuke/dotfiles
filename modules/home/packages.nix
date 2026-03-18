@@ -12,6 +12,7 @@
       httpie
       jq
       lefthook
+      mas
       neofetch
       ni
       nodejs_24
