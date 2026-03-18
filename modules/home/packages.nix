@@ -13,7 +13,7 @@
       jq
       lefthook
       mas
-      neofetch
+      fastfetch
       ni
       nodejs_24
       openssl
