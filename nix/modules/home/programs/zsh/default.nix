@@ -1,4 +1,13 @@
 { pkgs, ... }:
+let
+  functionsDir = ./functions;
+  functionFiles =
+    let
+      entries = builtins.readDir functionsDir;
+    in
+    builtins.map (name: builtins.readFile (functionsDir + "/${name}"))
+      (builtins.filter (name: entries.${name} == "regular") (builtins.attrNames entries));
+in
 {
   programs.zsh = {
     enable = true;
@@ -23,6 +32,8 @@
       LANG = "ja_JP.UTF-8";
     };
 
-    initContent = builtins.readFile ./config.zsh;
+    initContent = builtins.concatStringsSep "\n" (
+      [ (builtins.readFile ./config.zsh) ] ++ functionFiles
+    );
   };
 }

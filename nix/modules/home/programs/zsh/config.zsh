@@ -45,9 +45,3 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # dirs
 zstyle ':completion:*' list-dirs-first true
-
-# Load custom functions from the managed XDG config directory.
-for function_file in "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/functions/*.zsh(N); do
-  source "$function_file"
-done
-unset function_file
