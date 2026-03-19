@@ -42,5 +42,6 @@
       postman
       spotify
       the-unarchiver
+      # visual-studio-code
     ]);
 }

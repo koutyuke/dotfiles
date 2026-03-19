@@ -43,7 +43,7 @@
       systems = [ "aarch64-darwin" ];
       imports = with inputs; [
         treefmt-nix.flakeModule
-        ./flakes
+        ./nix/flakes
       ];
     };
 }
