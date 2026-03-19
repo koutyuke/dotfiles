@@ -1,22 +1,3 @@
-# ghq + fzf: project switcher
-function prj() {
-  local src=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
-  if [ -n "$src" ]; then
-    cd $(ghq root)/$src
-  fi
-}
-
-# fzf: local branch switcher
-function fbr() {
-  local b
-  b=$(git branch --all --color=never 2>/dev/null \
-    | sed 's/^[*[:space:]]*//' \
-    | sed 's#^remotes/##' \
-    | sort -u \
-    | fzf --prompt='branch> ') || return
-  git checkout "${b#origin/}"
-}
-
 # fzf: delete local branch
 # default: show only merged branches (safe)
 # -a: include all branches
@@ -64,30 +45,4 @@ function fbd() {
   fi
 
   git branch "$delete_flag" "${selected[@]}"
-}
-
-
-# fzf: insert history
-function fhistory() {
-  local selected
-  selected=$(fc -rl 1 | fzf --tac --no-sort --height 40% --prompt='history> ' \
-    | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//') || return
-  LBUFFER+="$selected"
-  zle redisplay
-}
-zle -N fzf-history-insert
-bindkey '^R' fzf-history-insert
-
-# fzf: cd
-function fcd() {
-  local dir
-  dir=$(find ${1:-.} -type d -not -path '*/.git/*' 2>/dev/null | fzf +m) || return
-  cd "$dir"
-}
-
-# fzf: kill
-function fkill() {
-  local pid
-  pid=$(ps -ef | sed 1d | fzf --prompt='kill> ' | awk '{print $2}') || return
-  kill -TERM "$pid"
 }

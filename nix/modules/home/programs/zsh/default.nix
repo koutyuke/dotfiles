@@ -7,7 +7,6 @@
 
     shellAliases = {
       proot = "cd $(git rev-parse --show-toplevel)";
-      # sed = "gsed";
     };
 
     oh-my-zsh = {
@@ -24,11 +23,6 @@
       LANG = "ja_JP.UTF-8";
     };
 
-    initContent = builtins.concatStringsSep "\n" [
-      # other configs
-      (builtins.readFile ./config.zsh)
-      # useful functions
-      (builtins.readFile ./scripts.zsh)
-    ];
+    initContent = builtins.readFile ./config.zsh;
   };
 }
