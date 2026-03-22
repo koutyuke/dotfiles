@@ -21,6 +21,7 @@
       tree
       watchman
       yq-go
+      postgresql
 
       # Development tools
       cocoapods
@@ -28,11 +29,11 @@
       uv
     ]
     ++ (with pkgs.brewCasks; [
+      beekeeper-studio
       canva
       chatgpt
       clipy
       cursor
-      dbvisualizer
       devtoys
       figma
       jordanbaird-ice
@@ -42,6 +43,5 @@
       postman
       spotify
       the-unarchiver
-      # visual-studio-code
     ]);
 }
