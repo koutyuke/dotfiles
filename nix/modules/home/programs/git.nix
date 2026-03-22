@@ -21,6 +21,7 @@
     ignores = [
       ".DS_Store"
       "todo.me.md"
+      ".serena"
     ];
   };
 }
