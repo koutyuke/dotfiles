@@ -1,47 +1,47 @@
 { pkgs, ... }:
 {
-  home.packages =
-    with pkgs;
-    [
-      # CLI tools
-      act
-      bun
-      ffmpeg
-      fd
-      ghq
-      httpie
-      jq
-      lefthook
-      mas
-      fastfetch
-      ni
-      nodejs_24
-      openssl
-      ripgrep
-      tree
-      watchman
-      yq-go
-      postgresql
+  home.packages = [
+    pkgs.brewCasks."jordanbaird-ice@beta"
+  ]
+  ++ (with pkgs; [
+    # CLI tools
+    act
+    bun
+    ffmpeg
+    fd
+    ghq
+    httpie
+    jq
+    lefthook
+    mas
+    fastfetch
+    ni
+    nodejs_24
+    openssl
+    ripgrep
+    tree
+    watchman
+    yq-go
+    postgresql
 
-      # Development tools
-      cocoapods
-      mise
-      uv
-    ]
-    ++ (with pkgs.brewCasks; [
-      beekeeper-studio
-      canva
-      chatgpt
-      clipy
-      cursor
-      devtoys
-      figma
-      jordanbaird-ice
-      keyboardcleantool
-      notion
-      notunes
-      postman
-      spotify
-      the-unarchiver
-    ]);
+    # Development tools
+    cocoapods
+    mise
+    uv
+  ])
+  ++ (with pkgs.brewCasks; [
+    beekeeper-studio
+    canva
+    chatgpt
+    clipy
+    cursor
+    devtoys
+    figma
+    keyboardcleantool
+    notion
+    notunes
+    postman
+    spotify
+    the-unarchiver
+  ]);
 }
