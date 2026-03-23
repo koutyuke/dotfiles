@@ -5,8 +5,9 @@ let
     let
       entries = builtins.readDir functionsDir;
     in
-    builtins.map (name: builtins.readFile (functionsDir + "/${name}"))
-      (builtins.filter (name: entries.${name} == "regular") (builtins.attrNames entries));
+    builtins.map (name: builtins.readFile (functionsDir + "/${name}")) (
+      builtins.filter (name: entries.${name} == "regular") (builtins.attrNames entries)
+    );
 in
 {
   programs.zsh = {
