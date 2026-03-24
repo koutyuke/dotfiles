@@ -1,5 +1,10 @@
 final: prev: {
   brewCasks = prev.brewCasks // {
+    # 7zz extracts the DMG into DbVisualizer/DbVisualizer.app/ instead of DbVisualizer.app/
+    dbvisualizer = prev.brewCasks.dbvisualizer.overrideAttrs (_: {
+      sourceRoot = "DbVisualizer/DbVisualizer.app";
+    });
+
     # Keep the upstream URL and only update the fixed-output hash.
     istat-menus = prev.brewCasks.istat-menus.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
