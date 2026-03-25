@@ -3,6 +3,7 @@
     ./zsh
 
     ./bat.nix
+    ./direnv.nix
     ./fzf.nix
     ./gh.nix
     # ./ghostty.nix
