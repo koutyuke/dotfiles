@@ -20,8 +20,9 @@
 
     ignores = [
       ".DS_Store"
-      "todo.me.md"
+      ".direnv"
       ".serena"
+      "todo.me.md"
     ];
   };
 }
