@@ -6,7 +6,7 @@
     ./direnv.nix
     ./fzf.nix
     ./gh.nix
-    # ./ghostty.nix
+    ./ghostty.nix
     ./git.nix
     ./gpg.nix
     ./starship.nix
