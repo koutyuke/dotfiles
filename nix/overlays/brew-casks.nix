@@ -25,7 +25,7 @@ final: prev: {
     spotify = prev.brewCasks.spotify.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
         url = builtins.head oldAttrs.src.urls;
-        hash = "sha256-uB1860OHQpOeGLNbQqmvEfttTMuU5AdHThEwAA4NEkE=";
+        hash = "sha256-04VhZ8XUpJIg5Kv/Q18s0cE/nV1tO03XlwQHwmBBT0g=";
       };
     });
 

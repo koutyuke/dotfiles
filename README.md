@@ -96,3 +96,13 @@ darwin-rebuild build --flake .
 ```bash
 nix fmt
 ```
+
+### Update Commands
+
+```bash
+# Update flake inputs only
+nix run .#update
+
+# Apply Nix/Homebrew/MAS updates from the current lock file
+nix run .#upgrade
+```

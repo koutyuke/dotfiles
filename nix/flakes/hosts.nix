@@ -11,6 +11,7 @@ in
         overlays = [
           inputs.brew-nix.overlays.default
           (import ../overlays/brew-casks.nix)
+          (import ../overlays/packages.nix)
         ];
       };
     };
