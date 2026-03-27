@@ -16,22 +16,19 @@ _: {
             nix-collect-garbage -d
 
             echo ""
-            echo "✅ Done! Run 'darwin-rebuild switch --flake .' to apply changes."
+            echo "✅ Flake inputs have been updated. Run 'nix run .#upgrade' to apply changes."
           ''
         );
       };
 
-      apps.update-gui = {
+      apps.upgrade = {
         type = "app";
         program = toString (
-          pkgs.writeShellScript "update-gui-apps" ''
+          pkgs.writeShellScript "upgrade-system-and-apps" ''
             set -euo pipefail
 
-            echo "🔄 Updating flake inputs (includes brew-api for latest cask versions)..."
-            nix flake update
-
             echo ""
-            echo "🖥️  Rebuilding darwin configuration (triggers Homebrew cask updates)..."
+            echo "🖥️  Rebuilding darwin configuration (updates nix packages and Homebrew-managed apps)..."
             darwin-rebuild switch --flake .
 
             echo ""
@@ -43,9 +40,10 @@ _: {
             nix-collect-garbage -d
 
             echo ""
-            echo "✅ All GUI apps have been updated!"
+            echo "✅ System packages and GUI apps have been applied."
           ''
         );
       };
+
     };
 }
