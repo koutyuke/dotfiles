@@ -22,7 +22,7 @@
       ".DS_Store"
       ".direnv"
       ".serena"
-      "todo.me.md"
+      ".koutyuke"
     ];
   };
 }
