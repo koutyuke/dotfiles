@@ -7,22 +7,22 @@
     # CLI tools
     act
     bun
-    ffmpeg
+    fastfetch
     fd
+    ffmpeg
     ghq
     httpie
     jq
     lefthook
     mas
-    fastfetch
     ni
     nodejs_24
     openssl
+    postgresql
     ripgrep
     tree
     watchman
     yq-go
-    postgresql
 
     # Development tools
     cocoapods
