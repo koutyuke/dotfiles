@@ -29,6 +29,9 @@
     mise
     uv
   ])
+  ++ (with pkgs.llm-agents; [
+    codex
+  ])
   ++ (with pkgs.brewCasks; [
     canva
     chatgpt
