@@ -28,6 +28,9 @@
     cocoapods
     mise
     uv
+
+    # GUI Applications
+    vscode
   ])
   ++ (with pkgs.llm-agents; [
     codex
