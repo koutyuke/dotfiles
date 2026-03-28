@@ -11,7 +11,7 @@
 
 ### 判断フロー
 
-```
+```text
 1. 複数マシン（個人PC・仕事PC等）で共通して使うか？
    → Yes: modules/ に書く（共通モジュール）
    → No:  hosts/<hostname>/ に書く（ホスト固有）
@@ -24,20 +24,24 @@
 ### 具体的な判断基準
 
 **hosts/ に書く（ホスト固有）の例:**
+
 - 業務PCでのみ使うアプリ・ツール（`microsoft-teams`, `nordlayer`, `awscli2` 等）
 - Git のユーザー名・メールアドレス・GPG 署名鍵などの個人情報
 - ホスト名・ネットワーク設定
 
 **modules/ に書く（共通）の例:**
+
 - どのマシンでも必ず使う個人ツール（`fzf`, `ripgrep`, `ghq` 等）
 - macOS 全般の設定（Dock, Finder, トラックパッド 等）
 - フォント・タイムゾーン・セキュリティ設定
 
 **darwin/ スコープ（nix-darwin）を使う条件:**
+
 - `/Applications` への配置・システム統合が必要な GUI アプリ
 - システム全体（全ユーザー）で使う CLI ツール
 
 **home/ スコープ（home-manager）を使う条件:**
+
 - 個人の CLI ツール・GUI アプリ
 - CLI ツールの詳細設定（`programs.<tool>`）
 
@@ -45,7 +49,7 @@
 
 ## ファイル構成と役割
 
-```
+```text
 modules/
   darwin/
     default.nix       imports をまとめるだけ
@@ -73,20 +77,20 @@ hosts/
 
 ## インストール方法とファイルの対応
 
-| インストール方法 | Nix の書き方 | ファイル |
-|---|---|---|
-| nixpkgs（システム全体） | `environment.systemPackages` | `modules/darwin/packages.nix` |
-| nixpkgs（ユーザー共通） | `home.packages = with pkgs` | `modules/home/packages.nix` |
-| nixpkgs（ユーザー固有） | `home.packages = with pkgs` | `hosts/.../home.nix` |
-| brew-nix（ユーザー共通） | `home.packages = with pkgs.brewCasks` | `modules/home/packages.nix` |
-| brew-nix（ユーザー固有） | `home.packages = with pkgs.brewCasks` | `hosts/.../home.nix` |
-| Homebrew Cask（共通） | `homebrew.casks` | `modules/darwin/homebrew.nix` |
-| Homebrew Cask（ホスト固有） | `homebrew.casks` | `hosts/.../configuration.nix` |
-| Mac App Store | `homebrew.masApps` | `modules/darwin/homebrew.nix` |
-| Homebrew Formula | `homebrew.brews` | `modules/darwin/homebrew.nix` |
-| Homebrew tap | `homebrew.taps` | `modules/darwin/homebrew.nix` |
-| nix-darwin programs | `programs.<tool>` | `modules/darwin/programs.nix` |
-| home-manager programs | `programs.<tool>` | `modules/home/programs/<tool>.nix` |
+| インストール方法            | Nix の書き方                          | ファイル                           |
+| --------------------------- | ------------------------------------- | ---------------------------------- |
+| nixpkgs（システム全体）     | `environment.systemPackages`          | `modules/darwin/packages.nix`      |
+| nixpkgs（ユーザー共通）     | `home.packages = with pkgs`           | `modules/home/packages.nix`        |
+| nixpkgs（ユーザー固有）     | `home.packages = with pkgs`           | `hosts/.../home.nix`               |
+| brew-nix（ユーザー共通）    | `home.packages = with pkgs.brewCasks` | `modules/home/packages.nix`        |
+| brew-nix（ユーザー固有）    | `home.packages = with pkgs.brewCasks` | `hosts/.../home.nix`               |
+| Homebrew Cask（共通）       | `homebrew.casks`                      | `modules/darwin/homebrew.nix`      |
+| Homebrew Cask（ホスト固有） | `homebrew.casks`                      | `hosts/.../configuration.nix`      |
+| Mac App Store               | `homebrew.masApps`                    | `modules/darwin/homebrew.nix`      |
+| Homebrew Formula            | `homebrew.brews`                      | `modules/darwin/homebrew.nix`      |
+| Homebrew tap                | `homebrew.taps`                       | `modules/darwin/homebrew.nix`      |
+| nix-darwin programs         | `programs.<tool>`                     | `modules/darwin/programs.nix`      |
+| home-manager programs       | `programs.<tool>`                     | `modules/home/programs/<tool>.nix` |
 
 ---
 
@@ -108,7 +112,7 @@ hosts/
 
 brew-nix で入れると判断した場合、次は **Host か User か** を決める:
 
-```
+```text
 全マシン共通？  → modules/home/packages.nix（home.packages = with pkgs.brewCasks）
 このホスト固有？ → hosts/<hostname>/users/<username>/home.nix（home.packages = with pkgs.brewCasks）
 ```
@@ -117,18 +121,18 @@ brew-nix で入れると判断した場合、次は **Host か User か** を決
 
 以下のいずれかに該当する場合 → `homebrew.casks` を使う（`/Applications` に配置される）
 
-| 該当ケース | 具体例 |
-|---|---|
-| ブラウザ（URI スキーム・拡張連携） | Arc, Chrome, Firefox |
-| カーネル拡張・システム機能拡張 | Karabiner Elements, OrbStack |
-| VPN クライアント | NordLayer, AWS VPN Client |
-| 特権ヘルパーが必要 | AlDente, iStat Menus, CleanMyMac |
-| カスタム tap が必要 | arto-app/tap/arto 等 |
-| brew-nix で展開エラーが解決しない | — |
+| 該当ケース                         | 具体例                           |
+| ---------------------------------- | -------------------------------- |
+| ブラウザ（URI スキーム・拡張連携） | Arc, Chrome, Firefox             |
+| カーネル拡張・システム機能拡張     | Karabiner Elements, OrbStack     |
+| VPN クライアント                   | NordLayer, AWS VPN Client        |
+| 特権ヘルパーが必要                 | AlDente, iStat Menus, CleanMyMac |
+| カスタム tap が必要                | arto-app/tap/arto 等             |
+| brew-nix で展開エラーが解決しない  | —                                |
 
 `homebrew.casks` に入れると判断した場合、次は **Host か User か** を決める:
 
-```
+```text
 全マシン共通？  → modules/darwin/homebrew.nix（homebrew.casks）
 このホスト固有？ → hosts/<hostname>/configuration.nix（homebrew.casks）
 ```
@@ -137,7 +141,7 @@ brew-nix で入れると判断した場合、次は **Host か User か** を決
 
 Homebrew Cask にも存在しない場合 → `homebrew.masApps` を使う
 
-```
+```text
 modules/darwin/homebrew.nix または hosts/<hostname>/configuration.nix
 ```
 
@@ -164,7 +168,7 @@ modules/darwin/homebrew.nix または hosts/<hostname>/configuration.nix
 
 ### パッケージのみインストールする場合
 
-```
+```text
 1. nixpkgs にある？
    → Yes
      全マシン共通？  → modules/home/packages.nix（home.packages = with pkgs）
@@ -181,6 +185,7 @@ modules/darwin/homebrew.nix または hosts/<hostname>/configuration.nix
 `programs.<tool>` はインストールと設定を兼ねるため、`packages.nix` には書かない。
 
 **設定量の目安：**
+
 - シンプル（5行程度）→ `programs/<tool>.nix`（単一ファイル）
 - 複雑（`extraConfig` が長い等）→ `programs/<tool>/default.nix`（ディレクトリ化）
 

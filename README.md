@@ -1,108 +1,166 @@
 # dotfiles
 
-Declarative macOS system configuration using [Nix Flakes](https://nixos.wiki/wiki/Flakes), [nix-darwin](https://github.com/nix-darwin/nix-darwin), and [home-manager](https://github.com/nix-community/home-manager).
+Declarative macOS dotfiles built with `nix-darwin` and `home-manager`.
+This repository manages system settings, CLI tools, GUI applications, shell configuration, and Karabiner settings through a single Nix Flake.
 
-## Overview
+## Stack
 
-This repository manages the entire macOS environment — system settings, packages, GUI applications, shell configuration, and dotfiles — all through Nix.
+- `nix-darwin`: macOS system configuration
+- `home-manager`: user environment and dotfile management
+- `flake-parts`: modular flake outputs
+- `brew-nix`: Homebrew Casks exposed as Nix packages
+- `treefmt-nix`: unified `nix fmt` configuration
 
-**Key technologies:**
+## Current Layout
 
-- **nix-darwin** — Declarative macOS system configuration
-- **home-manager** — Per-user package and dotfile management
-- **flake-parts** — Modular flake structure
-- **brew-nix** — Homebrew Casks as Nix derivations (no Homebrew installation required)
-- **treefmt-nix** — Unified code formatting
-
-## Repository Structure
+The current flake defines a single `koutyuke` host for `aarch64-darwin`.
 
 ```text
 .
-├── flake.nix                          # Flake entrypoint & input definitions
+├── flake.nix
 ├── flake.lock
-│
-├── flakes/                            # Flake output modules
-│   ├── hosts.nix                      # darwinConfigurations (host definitions)
-│   └── ...
-│
-├── lib/                               # Helper functions
-├── overlays/                          # Nixpkgs overlays
-│
-├── hosts/                             # Per-host configurations
-│   └── <hostname>/
-│       ├── configuration.nix          # nix-darwin config (host-specific)
-│       └── users/
-│           └── <username>/
-│               └── home.nix           # home-manager config (user-specific)
-│
-└── modules/                           # Shared, reusable modules
-    ├── darwin/                        # System-level (nix-darwin) modules
-    │   ├── default.nix                # Module imports
-    │   ├── base.nix                   # System packages, fonts, Nix settings
-    │   └── defaults.nix               # macOS system preferences
-    │
-    └── home/                          # User-level (home-manager) modules
-        ├── default.nix                # Module imports
-        ├── packages.nix               # Nix packages (CLI & dev tools)
-        ├── casks.nix                  # Homebrew Casks (GUI applications)
-        └── programs/                  # Programs with configuration
+├── README.md
+├── docs/
+│   └── package-management.md
+├── karabiner/
+│   └── karabiner.json
+└── nix/
+    ├── flakes/
+    │   ├── apps.nix
+    │   ├── default.nix
+    │   ├── hosts.nix
+    │   └── treefmt.nix
+    ├── hosts/
+    │   └── koutyuke/
+    │       ├── configuration.nix
+    │       └── users/
+    │           └── kousuke/
+    │               └── home.nix
+    ├── lib/
+    │   └── mk-darwin-system.nix
+    ├── modules/
+    │   ├── darwin/
+    │   │   ├── configuration.nix
+    │   │   ├── default.nix
+    │   │   ├── dotfiles/
+    │   │   ├── homebrew.nix
+    │   │   ├── packages.nix
+    │   │   └── programs.nix
+    │   └── home/
+    │       ├── default.nix
+    │       ├── packages.nix
+    │       └── programs/
+    └── overlays/
+        ├── brew-casks.nix
+        └── packages.nix
 ```
 
-## Architecture
-
-### Configuration Flow
+## Configuration Flow
 
 ```text
 flake.nix
- └─ flakes/hosts.nix                    # Defines hosts, applies overlays
-      └─ lib/mk-darwin-system.nix        # Wires nix-darwin + home-manager + brew-nix
-           └─ hosts/<host>/configuration.nix
-                ├─ modules/darwin/        # System-wide settings
-                └─ users/<user>/home.nix
-                     └─ modules/home/     # User-wide settings
+└── nix/flakes/default.nix
+    ├── nix/flakes/hosts.nix
+    │   └── nix/lib/mk-darwin-system.nix
+    │       └── nix/hosts/koutyuke/configuration.nix
+    │           ├── nix/modules/darwin/
+    │           └── nix/hosts/koutyuke/users/kousuke/home.nix
+    │               └── nix/modules/home/
+    ├── nix/flakes/apps.nix
+    └── nix/flakes/treefmt.nix
 ```
 
-### Layer Responsibilities
+Responsibilities are split as follows:
 
-| Layer               | Location                             | Purpose                                             |
-| ------------------- | ------------------------------------ | --------------------------------------------------- |
-| **Overlays**        | `overlays/`                          | Patch package derivations (cask hashes, variations) |
-| **System (shared)** | `modules/darwin/`                    | macOS defaults, system packages, fonts, security    |
-| **User (shared)**   | `modules/home/packages.nix`          | CLI tools & dev tools shared across all users       |
-| **User (shared)**   | `modules/home/casks.nix`             | GUI applications shared across all users            |
-| **User (shared)**   | `modules/home/programs/`             | Program-specific settings & dotfiles                |
-| **Host-specific**   | `hosts/<host>/configuration.nix`     | Hostname, user bindings                             |
-| **User-specific**   | `hosts/<host>/users/<user>/home.nix` | User-specific packages, git identity, etc.          |
+- `nix/modules/darwin/`: shared system-wide settings
+- `nix/modules/home/`: shared user-level settings
+- `nix/hosts/koutyuke/`: host-specific settings
+- `nix/hosts/koutyuke/users/kousuke/`: user-specific settings
+- `nix/overlays/`: package overrides for `brew-nix` and custom packages
 
-## Usage
+## What This Repository Manages
 
-### Prerequisites
+- Core macOS settings
+  - timezone
+  - Touch ID for `sudo`
+  - fonts
+- System-level application integration
+  - `homebrew.casks`
+  - `masApps`
+  - applications that must live in `/Applications`
+- User-level CLI and GUI tools
+  - `home.packages`
+  - `programs.<tool>`
+- Karabiner configuration
+  - [`karabiner/karabiner.json`](./karabiner/karabiner.json)
+  - linked into `~/.config/karabiner` by an activation script
 
-- macOS (aarch64)
-- [Nix](https://nixos.org/download) (installed via [DeterminateSystems/nix-installer](https://github.com/DeterminateSystems/nix-installer))
+## Key Files
 
-### Build & Apply
+- [`flake.nix`](./flake.nix)
+  - flake entry point and input definitions
+- [`nix/flakes/hosts.nix`](./nix/flakes/hosts.nix)
+  - defines `darwinConfigurations.koutyuke`
+- [`nix/lib/mk-darwin-system.nix`](./nix/lib/mk-darwin-system.nix)
+  - wires together `nix-darwin`, `home-manager`, and `brew-nix`
+- [`nix/modules/darwin/configuration.nix`](./nix/modules/darwin/configuration.nix)
+  - shared macOS and Nix base settings
+- [`nix/modules/darwin/homebrew.nix`](./nix/modules/darwin/homebrew.nix)
+  - Homebrew Casks and Mac App Store apps
+- [`nix/modules/home/packages.nix`](./nix/modules/home/packages.nix)
+  - shared CLI and GUI packages
+- [`nix/modules/home/programs/default.nix`](./nix/modules/home/programs/default.nix)
+  - imports program-specific configuration for `bat`, `direnv`, `fzf`, `gh`, `git`, `gpg`, `ghostty`, `starship`, and `zsh`
+- [`nix/hosts/koutyuke/configuration.nix`](./nix/hosts/koutyuke/configuration.nix)
+  - host-specific system settings and additional applications
+- [`nix/hosts/koutyuke/users/kousuke/home.nix`](./nix/hosts/koutyuke/users/kousuke/home.nix)
+  - user-specific packages and Git identity
+
+## Setup And Apply
+
+Prerequisites:
+
+- macOS on Apple Silicon
+- Nix is already installed
+- `darwin-rebuild` is available
+
+Apply the configuration:
 
 ```bash
-# Build and switch to the new configuration
-darwin-rebuild switch --flake .
-
-# Build without switching (dry run)
-darwin-rebuild build --flake .
+darwin-rebuild switch --flake .#koutyuke
 ```
 
-### Format Code
+Build without switching:
+
+```bash
+darwin-rebuild build --flake .#koutyuke
+```
+
+Format the repository:
 
 ```bash
 nix fmt
 ```
 
-### Update Commands
+Update flake inputs:
 
 ```bash
-# Update flake inputs only
 nix run .#update
-
-# Apply Nix/Homebrew/MAS updates from the current lock file
-nix run .#upgrade
 ```
+
+## Change Guidelines
+
+Use these placement rules by default:
+
+- shared system settings: `nix/modules/darwin/`
+- shared user settings: `nix/modules/home/`
+- host-specific settings for `koutyuke`: `nix/hosts/koutyuke/`
+- user-specific settings for `kousuke`: `nix/hosts/koutyuke/users/kousuke/`
+
+For detailed package placement rules, see [`docs/package-management.md`](./docs/package-management.md).
+
+## Notes
+
+- `brew-nix` is enabled, so GUI applications are split between `pkgs.brewCasks` and `homebrew.casks`
+- Karabiner config is not copied into the Nix store; the repository's `karabiner/` directory is symlinked instead
+- `system.configurationRevision` is populated from the flake `rev` or `dirtyRev`
