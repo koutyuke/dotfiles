@@ -13,10 +13,12 @@
     ffmpeg
     ghq
     httpie
+    jnv
     jq
     lefthook
     mas
     ni
+    nixfmt
     nodejs_24
     openssl
     postgresql
