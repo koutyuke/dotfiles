@@ -10,7 +10,8 @@ let
     - Use English only. Never use Japanese.
     - Use this format exactly: {emoji} {type}({scope}){breaking_change_exclamation}: {description}
     - Omit ! unless the change is breaking.
-    - Keep {scope} within roughly 3 path levels and derive it from the changed area when possible.
+    - Derive {scope} from the primary changed area when possible.
+    - Keep {scope} short, specific, and within about 3 directory levels.
     - Keep {description} concise, imperative, and within 64 characters when possible.
     - Output only the commit message text.
     - Allowed types and emoji:
@@ -127,16 +128,16 @@ let
         read -r choice
         case "$choice" in
           a|A)
-            git commit --edit -F "$message_file"
+            git commit -F "$message_file"
             break
             ;;
           e|E)
-            "''${VISUAL:-''${EDITOR:-vi}}" "$message_file"
+            "vim" "$message_file"
             if [ ! -s "$message_file" ]; then
               echo "Commit message is empty. Cancelling."
               exit 1
             fi
-            git commit --edit -F "$message_file"
+            git commit -F "$message_file"
             break
             ;;
           c|C)
