@@ -5,37 +5,24 @@
 }:
 let
   aiCommitPromptContext = ''
-    Project-specific commit guidance:
-    - Output exactly one line.
-    - Use English only. Never use Japanese.
-    - Use this format exactly: {emoji} {type}({scope}){breaking_change_exclamation}: {description}
-    - Omit ! unless the change is breaking.
-    - Derive {scope} from the primary changed area when possible.
-    - Keep {scope} short, specific, and within about 3 directory levels.
-    - Keep {description} concise, imperative, and within 64 characters when possible.
-    - Output only the commit message text.
-    - Allowed types and emoji:
-      - ✨ feat
-      - 🎈 improve
-      - 🪦 remove
-      - 🐛 fix
-      - 📝 docs
-      - 💄 style
-      - ♻️ refactor
-      - 🏎️ perf
-      - 🧪 test
-      - 🦺 ci
-      - 📦️ build
-      - 🔧 chore
+    Return exactly one English commit message line.
+    Format: {emoji} {type}({scope}){!}: {description}
+    Use ! only for breaking changes.
+    Keep scope short and based on the main changed area.
+    Keep description imperative and within 64 characters when possible.
+    Output only the message text.
+    Allowed pairs: ✨ feat, 🎈 improve, 🪦 remove, 🐛 fix, 📝 docs, 💄 style, ♻️ refactor, 🏎️ perf, 🧪 test, 🦺 ci, 📦️ build, 🔧 chore.
   '';
 
   aiCommitPromptContextFile = pkgs.writeText "lazygit-ai-commit-context.txt" aiCommitPromptContext;
 
-  aiCommitCommand = pkgs.writeShellApplication {
-    name = "lazygit-ai-commit";
+  aiCommitPreviewCommand = pkgs.writeShellApplication {
+    name = "lazygit-ai-commit-preview";
     runtimeInputs = with pkgs; [
       git
       gnused
+      coreutils
+      gnugrep
       llm-agents.codex
     ];
     text = ''
@@ -45,8 +32,8 @@ let
       cd "$repo_root"
 
       if git diff --cached --quiet; then
-        echo "No staged changes found. Stage changes first."
-        exit 1
+        printf '%s\n' "🔧 chore(repo): update staged changes"
+        exit 0
       fi
 
       tmpdir="$(mktemp -d "''${TMPDIR:-/tmp}/lazygit-ai-commit.XXXXXX")"
@@ -64,17 +51,8 @@ let
       git diff --cached --patch --minimal --no-ext-diff --submodule=diff > "$diff_file"
 
       cat > "$prompt_file" <<EOF
-      You generate Git commit messages for the current repository.
-
-      Follow this guidance exactly:
+      Generate a git commit message.
       $(cat ${aiCommitPromptContextFile})
-
-      Additional rules:
-      - Base the message only on the staged changes.
-      - Do not mention tools, AI, or that the message was generated.
-      - Do not wrap the answer in Markdown fences.
-      - Return exactly one commit message line.
-      - Do not add a body, bullets, explanation, or quotes.
 
       Repository: $(basename "$repo_root")
 
@@ -84,8 +62,6 @@ let
       Staged diff:
       $(cat "$diff_file")
       EOF
-
-      echo "Generating commit message with Codex..."
 
       if ! codex exec \
         --sandbox read-only \
@@ -98,57 +74,25 @@ let
         -c "model=\"$codex_model\"" \
         -c "model_reasoning_effort=\"$codex_reasoning_effort\"" \
         - < "$prompt_file" > "$codex_log_file" 2>&1; then
-        echo "Codex failed to generate a commit message."
-        echo
-        echo "Last Codex log lines:"
-        tail -n 80 "$codex_log_file"
-        exit 1
+        printf '%s\n' "🔧 chore(repo): update staged changes"
+        exit 0
       fi
 
       grep -v '^```' "$message_file" > "$tmpdir/message.cleaned.txt" || true
       mv "$tmpdir/message.cleaned.txt" "$message_file"
-      first_line="$(grep -v '^[[:space:]]*$' "$message_file" | head -n 1)"
-      printf '%s\n' "$first_line" > "$message_file"
-      if [ ! -s "$message_file" ]; then
-        echo "Codex returned an empty commit message."
-        exit 1
+
+      first_line="$(
+        grep -v '^[[:space:]]*$' "$message_file" \
+          | head -n 1 \
+          | sed 's/^[[:space:]]*//; s/[[:space:]]*$//'
+      )"
+
+      if [ -z "$first_line" ]; then
+        printf '%s\n' "🔧 chore(repo): update staged changes"
+        exit 0
       fi
 
-      echo
-      echo "Generated commit message:"
-      echo "----------------------------------------"
-      echo
-      cat "$message_file"
-      echo
-      echo "----------------------------------------"
-      echo
-
-      while true; do
-        printf "[a]ccept  [e]dit  [c]ancel: "
-        read -r choice
-        case "$choice" in
-          a|A)
-            git commit -F "$message_file"
-            break
-            ;;
-          e|E)
-            "vim" "$message_file"
-            if [ ! -s "$message_file" ]; then
-              echo "Commit message is empty. Cancelling."
-              exit 1
-            fi
-            git commit -F "$message_file"
-            break
-            ;;
-          c|C)
-            echo "Cancelled."
-            exit 0
-            ;;
-          *)
-            echo "Enter a, e, or c."
-            ;;
-        esac
-      done
+      printf '%s\n' "$first_line"
     '';
   };
 in
@@ -157,6 +101,7 @@ in
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "lzg";
+
     settings = {
       gui = {
         showIcons = false;
@@ -177,9 +122,16 @@ in
         {
           key = "C";
           context = "files";
-          description = "Generate commit message with Codex and review it";
-          command = lib.getExe aiCommitCommand;
-          output = "terminal";
+          description = "Generate commit message with Codex";
+          prompts = [
+            {
+              type = "input";
+              title = "Commit message";
+              key = "CommitMessage";
+              initialValue = ''{{ runCommand "${lib.getExe aiCommitPreviewCommand}" }}'';
+            }
+          ];
+          command = "git commit -m {{ .Form.CommitMessage | quote }}";
         }
       ];
     };
