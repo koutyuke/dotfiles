@@ -12,6 +12,7 @@ let
     background-blur = true;
     macos-icon = "xray";
     macos-option-as-alt = true;
+    window-padding-x = 8;
   };
 
   renderGhosttyValue =
