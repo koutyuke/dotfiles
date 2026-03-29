@@ -2,23 +2,26 @@
 {
   programs.zsh = {
     shellAliases = {
+      cd = "z";
+      ls = "eza --icons=auto --group-directories-first";
     };
 
     zsh-abbr = {
       enable = true;
       abbreviations = {
+        cdi = "zi";
         cdr = "cd $(git rev-parse --show-toplevel)";
-        l = "eza --icons=auto --group-directories-first";
-        la = "eza --icons=auto --group-directories-first -a";
-        ll = "eza --icons=auto --group-directories-first -hla";
-        lt = "eza --icons=auto --group-directories-first -aTL1";
+        la = "ls -a";
+        ll = "ls -alh";
+        lt = "ls -aTL1";
         o = "open";
 
         # git
         g = "git";
-        lg = "lazygit";
+        lzg = "lazygit";
 
-        # docker compose
+        # docker
+        lzd = "lazydocker";
         dc = "docker compose";
         dcu = "docker compose up";
         dcd = "docker compose down";
