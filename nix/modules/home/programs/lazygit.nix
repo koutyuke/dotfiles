@@ -158,7 +158,13 @@ in
     enableZshIntegration = true;
     shellWrapperName = "lzg";
     settings = {
+      gui = {
+        showIcons = false;
+      };
+
       git = {
+        # branchLogCmd = "git log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate {{branchName}} --";
+        # allBranchesLogCmd = "git log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all";
         pagers = [
           {
             colorArg = "always";
