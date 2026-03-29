@@ -6,6 +6,7 @@
 let
   aiCommitPromptContext = ''
     Return exactly one English commit message line.
+    Think briefly and return the result immediately.
     Format: {emoji} {type}({scope}){!}: {description}
     Use ! only for breaking changes.
     Keep scope short and based on the main changed area.
@@ -41,14 +42,14 @@ let
 
       prompt_file="$tmpdir/prompt.txt"
       message_file="$tmpdir/message.txt"
-      diff_file="$tmpdir/staged.diff"
       summary_file="$tmpdir/staged.summary"
+      name_status_file="$tmpdir/staged.name-status"
       codex_log_file="$tmpdir/codex.log"
       codex_model="''${CODEX_COMMIT_MODEL:-gpt-5.4-mini}"
       codex_reasoning_effort="''${CODEX_COMMIT_REASONING_EFFORT:-low}"
 
       git diff --cached --stat --summary > "$summary_file"
-      git diff --cached --patch --minimal --no-ext-diff --submodule=diff > "$diff_file"
+      git diff --cached --name-status > "$name_status_file"
 
       cat > "$prompt_file" <<EOF
       Generate a git commit message.
@@ -59,8 +60,8 @@ let
       Staged change summary:
       $(cat "$summary_file")
 
-      Staged diff:
-      $(cat "$diff_file")
+      Staged file status:
+      $(cat "$name_status_file")
       EOF
 
       if ! codex exec \
@@ -108,8 +109,10 @@ in
       };
 
       git = {
-        # branchLogCmd = "git log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate {{branchName}} --";
-        # allBranchesLogCmd = "git log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all";
+        allBranchesLogCmds = [
+          "git log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all"
+        ];
+        branchLogCmds = "git log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate {{branchName}} --";
         pagers = [
           {
             colorArg = "always";
