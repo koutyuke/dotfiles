@@ -4,35 +4,44 @@
     pkgs.brewCasks."jordanbaird-ice@beta"
   ]
   ++ (with pkgs; [
-    # CLI tools
+    # Shell and search
+    eza
+    fd
+    ripgrep
+    tree
+
+    # Nix and environment management
+    mise
+    nixfmt
+
+    # JavaScript and application development
     act
     bun
-    eza
-    fastfetch
-    fd
-    ffmpeg
-    ghq
-    httpie
-    jnv
-    jq
     lefthook
-    mas
     ni
-    nixfmt
     nodejs_24
     openssl
     postgresql
-    ripgrep
-    tree
     watchman
-    yq-go
 
-    # Development tools
     cocoapods
-    mise
     uv
 
-    # GUI Applications
+    # API and data tools
+    httpie
+    jnv
+    jq
+    yq-go
+
+    # Git and repository tools
+    ghq
+
+    # System utilities
+    fastfetch
+    ffmpeg
+    mas
+
+    # GUI applications from nixpkgs
     vscode
   ])
   ++ (with pkgs.llm-agents; [
