@@ -4,6 +4,7 @@
     enable = true;
     settings = {
       core = {
+        editor = "vim";
         pager = "delta";
       };
 
