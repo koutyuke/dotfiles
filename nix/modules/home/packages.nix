@@ -7,6 +7,7 @@
     # CLI tools
     act
     bun
+    eza
     fastfetch
     fd
     ffmpeg

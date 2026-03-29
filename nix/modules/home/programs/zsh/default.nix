@@ -1,23 +1,23 @@
-{ pkgs, ... }:
+{ ... }:
 let
-  functionsDir = ./functions;
-  functionFiles =
+  readDir =
+    dir:
     let
-      entries = builtins.readDir functionsDir;
+      entries = builtins.readDir dir;
     in
-    builtins.map (name: builtins.readFile (functionsDir + "/${name}")) (
+    map (name: builtins.readFile (dir + "/${name}")) (
       builtins.filter (name: entries.${name} == "regular") (builtins.attrNames entries)
     );
 in
 {
+  imports = [
+    ./alias.nix
+  ];
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      proot = "cd $(git rev-parse --show-toplevel)";
-    };
 
     oh-my-zsh = {
       enable = true;
@@ -34,7 +34,10 @@ in
     };
 
     initContent = builtins.concatStringsSep "\n" (
-      [ (builtins.readFile ./config.zsh) ] ++ functionFiles
+      [
+        (builtins.readFile ./config.zsh)
+      ]
+      ++ (readDir ./functions)
     );
   };
 }
