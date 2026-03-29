@@ -36,6 +36,7 @@
     # Git and repository tools
     delta
     ghq
+    lazydocker
 
     # System utilities
     fastfetch
