@@ -34,6 +34,7 @@
     yq-go
 
     # Git and repository tools
+    delta
     ghq
 
     # System utilities
