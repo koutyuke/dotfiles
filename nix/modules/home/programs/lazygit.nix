@@ -116,6 +116,7 @@ let
       echo
       echo "Generated commit message:"
       echo "----------------------------------------"
+      echo
       cat "$message_file"
       echo
       echo "----------------------------------------"
