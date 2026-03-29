@@ -9,6 +9,7 @@
     ./ghostty.nix
     ./git.nix
     ./gpg.nix
+    ./lazygit.nix
     ./starship.nix
     ./zoxide.nix
   ];

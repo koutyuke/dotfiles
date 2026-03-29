@@ -13,6 +13,14 @@ let
     macos-icon = "xray";
     macos-option-as-alt = true;
     window-padding-x = 8;
+
+    # Quick Terminal
+    keybind = [
+      "global:cmd+backquote=toggle_quick_terminal"
+    ];
+    quick-terminal-position = "center";
+    quick-terminal-size = "50%,500px";
+    quick-terminal-autohide = true;
   };
 
   renderGhosttyValue =

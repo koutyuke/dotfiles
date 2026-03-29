@@ -14,6 +14,10 @@
         lt = "eza --icons=auto --group-directories-first -aTL1";
         o = "open";
 
+        # git
+        g = "git";
+        lg = "lazygit";
+
         # docker compose
         dc = "docker compose";
         dcu = "docker compose up";
