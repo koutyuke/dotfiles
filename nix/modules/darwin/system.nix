@@ -19,6 +19,7 @@
       tilesize = 64;
       largesize = 80;
       magnification = true;
+      mru-spaces = false;
 
       # bottom-left = Desktop, top-right = Notification Center
       # 1: Disabled 4: Desktop, 12: Notification Center
