@@ -1,6 +1,7 @@
 {
   imports = [
     ./zsh
+    ./lazygit
 
     ./bat.nix
     ./direnv.nix
@@ -9,7 +10,6 @@
     ./ghostty.nix
     ./git.nix
     ./gpg.nix
-    ./lazygit.nix
     ./starship.nix
     ./zoxide.nix
   ];

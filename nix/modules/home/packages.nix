@@ -48,6 +48,7 @@
   ])
   ++ (with pkgs.llm-agents; [
     codex
+    claude-code
   ])
   ++ (with pkgs.brewCasks; [
     canva
