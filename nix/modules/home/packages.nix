@@ -54,6 +54,7 @@
     canva
     chatgpt
     clipy
+    codex-app
     cursor
     dbvisualizer
     devtoys
