@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../modules/darwin
@@ -34,9 +34,7 @@
   homebrew = {
     masApps = {
       "Goodnotes" = 1444383602;
-      "Kindle" = 302584613;
       "Prime Video" = 545519333;
-      "Windows App" = 1295203466;
     };
   };
 }
