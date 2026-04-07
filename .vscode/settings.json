@@ -1,9 +1,9 @@
 {
-  "editor.formatOnSave": true,
   "[nix]": {
     "editor.defaultFormatter": "jnoortheen.nix-ide",
     "editor.formatOnSave": true
   },
+  "editor.formatOnSave": true,
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
   "nix.serverSettings": {
@@ -13,5 +13,5 @@
       }
     }
   },
-  "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
+  "nixEnvSelector.suggestion": false
 }
