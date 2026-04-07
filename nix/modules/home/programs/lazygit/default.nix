@@ -42,7 +42,7 @@ in
 
     settings = {
       gui = {
-        showIcons = true;
+        nerdFontsVersion = "3";
       };
 
       git = {
