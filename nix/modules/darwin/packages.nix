@@ -3,9 +3,10 @@
   environment.systemPackages =
     with pkgs;
     [
-      vim
       curl
       git
+      gnused
+      vim
       wget
     ]
     ++ (with pkgs.brewCasks; [
