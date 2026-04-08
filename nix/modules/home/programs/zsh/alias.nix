@@ -15,6 +15,8 @@
         ll = "ls -alh";
         lt = "ls -aTL1";
         o = "open";
+        cwd = "copypath";
+        gwd = "open -a ghostty $PWD";
 
         # git
         g = "git";
