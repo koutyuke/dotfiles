@@ -16,11 +16,17 @@ tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/lazygit-ai-commit.XXXXXX")"
 trap 'rm -rf "$tmpdir"' EXIT
 
 mcp_disabled_args=()
-if mcp_names="$(codex mcp list --json 2>/dev/null | jq -r '.[].name' 2>/dev/null)"; then
+codex_config_file="${CODEX_HOME:-$HOME/.codex}/config.toml"
+if [ -r "$codex_config_file" ]; then
   while IFS= read -r mcp_name; do
     [ -n "$mcp_name" ] || continue
     mcp_disabled_args+=("-c" "mcp_servers.$mcp_name.enabled=false")
-  done <<< "$mcp_names"
+  done < <(
+    sed -nE \
+      -e 's/^[[:space:]]*\[mcp_servers\.([[:alnum:]_-]+)\][[:space:]]*$/\1/p' \
+      -e 's/^[[:space:]]*\[mcp_servers\."([^"]+)"\][[:space:]]*$/\1/p' \
+      "$codex_config_file"
+  )
 fi
 
 prompt_file="$tmpdir/prompt.txt"

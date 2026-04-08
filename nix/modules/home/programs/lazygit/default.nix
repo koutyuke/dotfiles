@@ -25,7 +25,6 @@ let
       gnused
       coreutils
       gnugrep
-      jq
       llm-agents.codex
     ];
     text = ''
