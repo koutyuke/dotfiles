@@ -5,6 +5,22 @@ final: prev: {
       sourceRoot = "DbVisualizer/DbVisualizer.app";
     });
 
+    coteditor = prev.brewCasks.coteditor.overrideAttrs (oldAttrs: {
+      installPhase = (oldAttrs.installPhase or "") + ''
+        cot="$out/Applications/CotEditor.app/Contents/SharedSupport/bin/cot"
+
+        if [ ! -x "$cot" ]; then
+          echo "CotEditor cot command not found at $cot" >&2
+          exit 1
+        fi
+
+        mkdir -p "$out/bin"
+        echo "#!${prev.runtimeShell}" > "$out/bin/cot"
+        echo "exec \"$cot\" \"\$@\"" >> "$out/bin/cot"
+        chmod +x "$out/bin/cot"
+      '';
+    });
+
     # Keep the upstream URL and only update the fixed-output hash.
     istat-menus = prev.brewCasks.istat-menus.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
