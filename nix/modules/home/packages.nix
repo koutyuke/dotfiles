@@ -55,11 +55,13 @@
     chatgpt
     clipy
     codex-app
+    coteditor
     cursor
     dbvisualizer
     devtoys
     figma
     keyboardcleantool
+    nani
     notion
     notunes
     postman
