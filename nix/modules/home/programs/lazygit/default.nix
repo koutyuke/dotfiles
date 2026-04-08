@@ -7,13 +7,13 @@ let
   aiCommitPromptContext = ''
     Return exactly one English commit message line.
     Think briefly and return the result immediately.
-    Format: {emoji} {type}({scope}){!}: {description}
-    Use ! only for breaking changes.
-    Keep scope short and based on the main changed area.
+    Format: `{emoji} {type}({scope}){!}: {description}`
+    Use `!` only for breaking changes.
+    Keep `scope` short and based on the main changed area.
     Base the message on the staged patch, not only filenames or stats.
-    Keep description imperative and within 64 characters when possible.
+    Keep `description` imperative and within 64 characters when possible.
     Output only the message text.
-    Allowed pairs: ✨ feat, 🎈 improve, 🪦 remove, 🐛 fix, 📝 docs, 💄 style, ♻️ refactor, 🏎️ perf, 🧪 test, 🦺 ci, 📦️ build, 🔧 chore.
+    Allowed pairs: `✨ feat`, `🎈 improve`, `🪦 remove`, `🐛 fix`, `📝 docs`, `💄 style`, `♻️ refactor`, `🏎️ perf`, `🧪 test`, `🦺 ci`, `📦️ build`, `🔧 chore`.
   '';
 
   aiCommitPromptContextFile = pkgs.writeText "lazygit-ai-commit-context.txt" aiCommitPromptContext;

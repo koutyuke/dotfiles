@@ -15,19 +15,20 @@ git diff --cached --quiet && fallback
 tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/lazygit-ai-commit.XXXXXX")"
 trap 'rm -rf "$tmpdir"' EXIT
 
-mcp_disabled_args=()
-codex_config_file="${CODEX_HOME:-$HOME/.codex}/config.toml"
-if [ -r "$codex_config_file" ]; then
-  while IFS= read -r mcp_name; do
-    [ -n "$mcp_name" ] || continue
-    mcp_disabled_args+=("-c" "mcp_servers.$mcp_name.enabled=false")
-  done < <(
-    sed -nE \
-      -e 's/^[[:space:]]*\[mcp_servers\.([[:alnum:]_-]+)\][[:space:]]*$/\1/p' \
-      -e 's/^[[:space:]]*\[mcp_servers\."([^"]+)"\][[:space:]]*$/\1/p' \
-      "$codex_config_file"
-  )
+codex_home="$tmpdir/codex-home"
+mkdir -p "$codex_home"
+
+real_codex_home="${CODEX_HOME:-$HOME/.codex}"
+if [ -r "$real_codex_home/auth.json" ]; then
+  ln -s "$real_codex_home/auth.json" "$codex_home/auth.json"
 fi
+
+cat > "$codex_home/config.toml" <<EOF
+model = "${CODEX_COMMIT_MODEL:-gpt-5.4-mini}"
+model_reasoning_effort = "${CODEX_COMMIT_REASONING_EFFORT:-low}"
+sandbox_mode = "read-only"
+plugins = {}
+EOF
 
 prompt_file="$tmpdir/prompt.txt"
 cat > "$prompt_file" <<EOF
@@ -44,13 +45,15 @@ $(git diff --cached --patch --minimal --no-ext-diff --submodule=diff)
 EOF
 
 message_file="$tmpdir/message.txt"
-codex exec \
+CODEX_HOME="$codex_home" codex exec \
+  --disable apps \
+  --disable plugins \
+  --disable tool_suggest \
   --sandbox read-only \
   --color never \
   --ephemeral \
   -C "$repo_root" \
   --output-last-message "$message_file" \
-  "${mcp_disabled_args[@]}" \
   -c "model=\"${CODEX_COMMIT_MODEL:-gpt-5.4-mini}\"" \
   -c "model_reasoning_effort=\"${CODEX_COMMIT_REASONING_EFFORT:-low}\"" \
   - < "$prompt_file" > "$tmpdir/codex.log" 2>&1 || fallback
