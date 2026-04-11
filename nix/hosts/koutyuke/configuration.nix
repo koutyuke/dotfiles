@@ -25,13 +25,15 @@
 
   environment.systemPackages = with pkgs.brewCasks; [
     aldente
-    aws-vpn-client
     cleanmymac
     istat-menus
     microsoft-teams
   ];
 
   homebrew = {
+    casks = [
+      "aws-vpn-client"
+    ];
     masApps = {
       "Goodnotes" = 1444383602;
       "Prime Video" = 545519333;
