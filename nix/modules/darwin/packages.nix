@@ -10,8 +10,8 @@
       wget
     ]
     ++ (with pkgs.brewCasks; [
+      alt-tab
       appcleaner
-      arc
       raycast
       monitorcontrol
       mos

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   homebrew = {
     enable = true;
@@ -8,6 +8,9 @@
     };
 
     casks = [
+      # Managed by Homebrew via nix-darwin because Arc browser works best when installed in /Applications via Homebrew, ensuring proper app integration and updates.
+      "arc"
+
       # Managed by Homebrew via nix-darwin because some applications must be placed in /Applications directory to work properly, and installing via nix-darwin's programs sometimes does not provide the latest version.
       "1password"
 
