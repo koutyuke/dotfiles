@@ -28,6 +28,7 @@
     cleanmymac
     istat-menus
     microsoft-teams
+    pronotes
   ];
 
   homebrew = {

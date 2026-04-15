@@ -17,6 +17,7 @@
       ssm-session-manager-plugin
     ]
     ++ (with pkgs.brewCasks; [
+      coconutbattery
       discord
       typora
     ]);
