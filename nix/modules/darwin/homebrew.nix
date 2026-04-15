@@ -25,6 +25,7 @@
     ];
 
     masApps = {
+      "1Password for Safari" = 1569813296;
       "Dropover" = 1355679052;
       "iMovie" = 408981434;
       "Keynote" = 409183694;
