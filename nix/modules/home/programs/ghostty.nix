@@ -15,12 +15,27 @@ let
     window-padding-x = 8;
 
     # Quick Terminal
-    keybind = [
-      "global:cmd+backquote=toggle_quick_terminal"
-    ];
     quick-terminal-position = "center";
     quick-terminal-size = "50%,500px";
     quick-terminal-autohide = true;
+
+    keybind = [
+      # Quick Terminal
+      "global:cmd+backquote=toggle_quick_terminal"
+
+      # tmux: Cmd+hjkl → C-b + ←↓↑→ (pane move)
+      # "cmd+h=text:\\x02\\x1b[D"
+      # "cmd+j=text:\\x02\\x1b[B"
+      # "cmd+k=text:\\x02\\x1b[A"
+      # "cmd+l=text:\\x02\\x1b[C"
+
+      # tmux: Cmd+d → C-b | (split horizontal), Cmd+Shift+d → C-b - (split vertical)
+      # "cmd+d=text:\\x02%"
+      # "cmd+shift+d=text:\\x02\""
+
+      # tmux: Cmd+Shift+w → C-b w (kill pane without confirmation)
+      # "cmd+shift+w=text:\\x02X"
+    ];
   };
 
   renderGhosttyValue =

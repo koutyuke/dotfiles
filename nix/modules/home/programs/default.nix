@@ -11,6 +11,7 @@
     ./git.nix
     ./gpg.nix
     ./starship.nix
+    ./tmux.nix
     ./zoxide.nix
   ];
 }
