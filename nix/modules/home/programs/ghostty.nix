@@ -14,6 +14,9 @@ let
     macos-option-as-alt = true;
     window-padding-x = 8;
 
+    unfocused-split-opacity = 0.72;
+    unfocused-split-fill = "#000000";
+
     # Quick Terminal
     quick-terminal-position = "center";
     quick-terminal-size = "50%,500px";
@@ -22,6 +25,18 @@ let
     keybind = [
       # Quick Terminal
       "global:cmd+backquote=toggle_quick_terminal"
+
+      # Move Pane
+      "ctrl+option+h=goto_split:left"
+      "ctrl+option+l=goto_split:right"
+      "ctrl+option+j=goto_split:down"
+      "ctrl+option+k=goto_split:up"
+
+      # Resize Pane (40px unit)
+      "cmd+ctrl+h=resize_split:left,40"
+      "cmd+ctrl+l=resize_split:right,40"
+      "cmd+ctrl+k=resize_split:up,40"
+      "cmd+ctrl+j=resize_split:down,40"
 
       # tmux: Cmd+hjkl → C-b + ←↓↑→ (pane move)
       # "cmd+h=text:\\x02\\x1b[D"
