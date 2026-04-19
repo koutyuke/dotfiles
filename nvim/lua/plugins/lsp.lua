@@ -56,9 +56,7 @@ return {
         }),
       })
 
-      local lspconfig = require("lspconfig")
-
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -71,14 +69,17 @@ return {
           },
         },
       })
+      vim.lsp.enable("lua_ls")
 
-      lspconfig.nixd.setup({
+      vim.lsp.config("nixd", {
         capabilities = capabilities,
       })
+      vim.lsp.enable("nixd")
 
-      lspconfig.bashls.setup({
+      vim.lsp.config("bashls", {
         capabilities = capabilities,
       })
+      vim.lsp.enable("bashls")
     end,
   },
 }

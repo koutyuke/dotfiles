@@ -11,14 +11,12 @@ return {
       config = {
         header = {
           "",
-          "    █  █  ███           █  █          ",
-          "    ██ ██ ███          ██ ██         ",
-          "    ███████ ████  ████  ███ ",
-          "    ███████████████ ████████████ ",
-          "    ███████████████████████████ ",
-          "    ███████████████████████████  ",
-          "    ███████████████████████████ ",
-          "     ████████████████████████████",
+          "███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
+          "████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
+          "██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
+          "██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
+          "██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
+          "╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝",
           "",
         },
         center = {
@@ -39,7 +37,7 @@ return {
           {
             icon = "  ",
             desc = "File Explorer",
-            key = "e",
+            key = "E",
             keymap = "SPC e",
             action = "Neotree filesystem toggle left",
           },
@@ -128,44 +126,46 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      options = {
-        theme = "catppuccin",
+    opts = function()
+      return {
+        options = {
+          theme = require("catppuccin.utils.lualine")(),
         globalstatus = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = { "dashboard" },
         },
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = {
-          {
-            "filename",
-            path = 1,
-          },
         },
-        lualine_x = {
-          {
-            "filetype",
-            icon_only = false,
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_c = {
+            {
+              "filename",
+              path = 1,
+            },
           },
-          "encoding",
+          lualine_x = {
+            {
+              "filetype",
+              icon_only = false,
+            },
+            "encoding",
+          },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
         },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      extensions = { "lazy", "neo-tree", "quickfix" },
-    },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { "filename" },
+          lualine_x = { "location" },
+          lualine_y = {},
+          lualine_z = {},
+        },
+        extensions = { "lazy", "neo-tree", "quickfix" },
+      }
+    end,
   },
 }

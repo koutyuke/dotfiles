@@ -10,7 +10,7 @@ return {
         cmp = true,
         dashboard = true,
         gitsigns = true,
-        lualine = true,
+        lualine = { enabled = true },
         markdown = true,
         mason = false,
         native_lsp = {
@@ -35,7 +35,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin-mocha")
+      vim.cmd.colorscheme("catppuccin-nvim")
     end,
   },
 }
