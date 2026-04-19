@@ -18,7 +18,7 @@
         cwd = "copypath";
         gwd = "open -a ghostty $PWD";
         tm = "tmux";
-        nv = "neovim";
+        nv = "nvim";
 
         # git
         g = "git";
