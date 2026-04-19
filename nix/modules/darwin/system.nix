@@ -6,6 +6,8 @@
       AppleShowAllExtensions = true;
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
+      InitialKeyRepeat = 15;
+      KeyRepeat = 2;
       NSTableViewDefaultSizeMode = 2;
       "com.apple.keyboard.fnState" = true;
       "com.apple.trackpad.forceClick" = false;

@@ -1,7 +1,5 @@
 # Neovim Cheat Sheet
 
-この repo の Neovim 構成向けチートシートです。
-
 | Item | Value |
 | --- | --- |
 | `leader` key | `Space` |
