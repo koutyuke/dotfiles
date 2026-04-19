@@ -50,8 +50,8 @@
 
 | Command | Meaning |
 | --- | --- |
-| `<leader>e` | 左 sidebar の `neo-tree` を toggle |
-| `<leader>E` | 現在の file を `neo-tree` で reveal |
+| `<leader>E` | 左 sidebar の `neo-tree` を toggle |
+| `<leader>e` | 現在の file を `neo-tree` で reveal |
 
 `neo-tree` を開いた状態でよく使うもの:
 

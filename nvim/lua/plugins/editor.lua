@@ -80,12 +80,12 @@ return {
     cmd = "Neotree",
     keys = {
       {
-        "<leader>e",
+        "<leader>E",
         "<cmd>Neotree filesystem toggle left<cr>",
         desc = "Toggle explorer",
       },
       {
-        "<leader>E",
+        "<leader>e",
         "<cmd>Neotree filesystem reveal left<cr>",
         desc = "Reveal file in explorer",
       },

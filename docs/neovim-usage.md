@@ -67,9 +67,9 @@ leader key は `Space` です。
   - 現在の window を閉じる
 - `<leader>Q`
   - すべて閉じる
-- `<leader>e`
-  - `neo-tree.nvim` の左 sidebar を toggle
 - `<leader>E`
+  - `neo-tree.nvim` の左 sidebar を toggle
+- `<leader>e`
   - 現在の file を `neo-tree.nvim` で reveal
 - `<leader>ff`
   - file search
