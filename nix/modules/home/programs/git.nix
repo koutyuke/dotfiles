@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       core = {
-        editor = "vim";
+        editor = "nvim";
         pager = "delta";
       };
 
