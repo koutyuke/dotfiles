@@ -8,9 +8,12 @@ let
   repoRoot = "${config.home.homeDirectory}/Desktop/projects/koutyuke/dotfiles";
   nvimSourceDir = "${repoRoot}/nvim";
   nvimConfigDir = "${config.xdg.configHome}/nvim";
+  nvimStateDir = "${config.xdg.stateHome}/nvim";
+  nvimLogDir = "${nvimStateDir}/log";
 in
 {
   home.sessionVariables = {
+    NVIM_LOG_FILE = "${nvimLogDir}/nvim.log";
     NVIM_TSDK = "${pkgs.typescript}/lib/node_modules/typescript/lib";
   };
 
@@ -41,6 +44,7 @@ in
       rm -rf "${nvimConfigDir}"
     fi
 
+    mkdir -p "${nvimLogDir}"
     mkdir -p "$(dirname "${nvimConfigDir}")"
     ln -sfn "${nvimSourceDir}" "${nvimConfigDir}"
   '';
