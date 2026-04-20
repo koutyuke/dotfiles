@@ -106,12 +106,18 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "[",
+                                    "key_code": "open_bracket",
                                     "modifiers": {
                                         "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
                                     }
                                 },
+                                "conditions": [
+                                    {
+                                        "type": "keyboard_type_if",
+                                        "keyboard_types": ["ansi", "iso"]
+                                    }
+                                ],
                                 "to": [
                                     {
                                         "key_code": "left_arrow",
@@ -122,12 +128,62 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "]",
+                                    "key_code": "close_bracket",
                                     "modifiers": {
                                         "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
                                     }
                                 },
+                                "conditions": [
+                                    {
+                                        "type": "keyboard_type_if",
+                                        "keyboard_types": ["jis"]
+                                    }
+                                ],
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": {
+                                        "mandatory": ["command", "option", "control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "keyboard_type_if",
+                                        "keyboard_types": ["ansi", "iso"]
+                                    }
+                                ],
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "backslash",
+                                    "modifiers": {
+                                        "mandatory": ["command", "option", "control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "keyboard_type_if",
+                                        "keyboard_types": ["jis"]
+                                    }
+                                ],
                                 "to": [
                                     {
                                         "key_code": "right_arrow",
