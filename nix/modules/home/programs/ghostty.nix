@@ -32,6 +32,8 @@ let
       "ctrl+option+l=goto_split:right"
       "ctrl+option+j=goto_split:down"
       "ctrl+option+k=goto_split:up"
+      # "ctrl+option+[=goto_split:previous"
+      # "ctrl+option+]=goto_split:next"
 
       # Resize Pane (40px unit)
       "cmd+ctrl+h=resize_split:left,40"
