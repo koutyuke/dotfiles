@@ -71,7 +71,7 @@
                         ]
                     },
                     {
-                        "description": "Command+Option+Control+W/B/0/$ -> Option+Left/Option+Right/Cmd+Left/Cmd+Right",
+                        "description": "Command+Option+Control+W/B/[/] -> Option+Left/Option+Right/Cmd+Left/Cmd+Right",
                         "manipulators": [
                             {
                                 "from": {
@@ -99,15 +99,14 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["option"]
+                                        "key_code": "left_arrow", "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "0",
+                                    "key_code": "[",
                                     "modifiers": {
                                         "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
@@ -123,9 +122,9 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "4",
+                                    "key_code": "]",
                                     "modifiers": {
-                                        "mandatory": ["command", "option", "control", "shift"],
+                                        "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
                                     }
                                 },
