@@ -22,7 +22,17 @@ return {
   {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      pre_hook = function(ctx)
+        if vim.bo.filetype ~= "nix" then
+          return
+        end
+
+        -- Comment.nvim's treesitter lookup crashes on nix buffers in the current
+        -- plugin/runtime combination. Fall back to Neovim's native commentstring.
+        return vim.bo.commentstring
+      end,
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
