@@ -26,6 +26,7 @@ opt.scrolloff = 4
 opt.sidescrolloff = 8
 opt.clipboard = "unnamedplus"
 opt.confirm = true
+opt.exrc = true
 opt.laststatus = 3
 opt.showmode = false
 
