@@ -32,6 +32,7 @@ return {
       local cmp = require("cmp")
       local cmp_lsp = require("cmp_nvim_lsp")
       local capabilities = cmp_lsp.default_capabilities()
+      local tsdk = vim.env.NVIM_TSDK ~= "" and vim.env.NVIM_TSDK or nil
 
       require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -80,6 +81,19 @@ return {
         capabilities = capabilities,
       })
       vim.lsp.enable("bashls")
+
+      vim.lsp.config("ts_ls", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("ts_ls")
+
+      vim.lsp.config("astro", {
+        capabilities = capabilities,
+        init_options = {
+          typescript = tsdk and { tsdk = tsdk } or {},
+        },
+      })
+      vim.lsp.enable("astro")
     end,
   },
 }

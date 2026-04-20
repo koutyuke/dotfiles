@@ -10,6 +10,10 @@ let
   nvimConfigDir = "${config.xdg.configHome}/nvim";
 in
 {
+  home.sessionVariables = {
+    NVIM_TSDK = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -20,12 +24,15 @@ in
     withRuby = false;
 
     extraPackages = with pkgs; [
+      astro-language-server
       bash-language-server
       lua-language-server
       nixd
       shellcheck
       shfmt
       stylua
+      typescript
+      typescript-language-server
     ];
   };
 

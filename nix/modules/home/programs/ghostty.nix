@@ -16,7 +16,7 @@ let
 
     unfocused-split-opacity = 0.72;
     unfocused-split-fill = "#000000";
-    split-divider-color="#7a7a7a";
+    split-divider-color = "#7a7a7a";
 
     # Quick Terminal
     quick-terminal-position = "center";

@@ -159,11 +159,14 @@ LSP / formatter は Nix 側で入れています。
 
 現時点では次のものを Neovim module で配布しています。
 
+- `astro-language-server`
 - `lua-language-server`
 - `nixd`
 - `shellcheck`
 - `shfmt`
 - `stylua`
+- `typescript`
+- `typescript-language-server`
 
 意図は明確です。
 
