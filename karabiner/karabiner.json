@@ -71,7 +71,7 @@
                         ]
                     },
                     {
-                        "description": "Command+Option+Control+W/B/0/$ -> Ctrl+Left/Ctrl+Right/Cmd+Left/Cmd+Right",
+                        "description": "Command+Option+Control+W/B/0/$ -> Option+Left/Option+Right/Cmd+Left/Cmd+Right",
                         "manipulators": [
                             {
                                 "from": {
@@ -84,7 +84,7 @@
                                 "to": [
                                     {
                                         "key_code": "right_arrow",
-                                        "modifiers": ["control"]
+                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -100,7 +100,7 @@
                                 "to": [
                                     {
                                         "key_code": "left_arrow",
-                                        "modifiers": ["control"]
+                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
