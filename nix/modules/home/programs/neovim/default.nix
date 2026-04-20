@@ -30,12 +30,17 @@ in
       astro-language-server
       bash-language-server
       lua-language-server
+      marksman
       nixd
+      oxfmt
       shellcheck
       shfmt
       stylua
+      taplo
       typescript
       typescript-language-server
+      vscode-langservers-extracted
+      yaml-language-server
     ];
   };
 

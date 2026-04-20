@@ -100,6 +100,7 @@ Telescope 内の基本操作:
 | Command | Meaning |
 | --- | --- |
 | `<leader>f` | `conform.nvim` で format |
+| `:w` | configured formatter があれば保存時に自動 format |
 | `gcc` | current line を comment toggle |
 | `gc` | visual selection を comment toggle |
 | `<C-Space>` | completion を開く |

@@ -8,10 +8,18 @@ return {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = "fallback",
+      },
       formatters_by_ft = {
+        json = { "oxfmt" },
         lua = { "stylua" },
+        markdown = { "oxfmt" },
         nix = { "nixfmt" },
         sh = { "shfmt" },
+        toml = { "oxfmt" },
+        yaml = { "oxfmt" },
         zsh = { "shfmt" },
       },
     },
@@ -82,18 +90,38 @@ return {
       })
       vim.lsp.enable("bashls")
 
+      vim.lsp.config("jsonls", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("jsonls")
+
+      vim.lsp.config("yamlls", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("yamlls")
+
+      vim.lsp.config("taplo", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("taplo")
+
+      vim.lsp.config("marksman", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("marksman")
+
       vim.lsp.config("ts_ls", {
         capabilities = capabilities,
       })
       vim.lsp.enable("ts_ls")
 
-      vim.lsp.config("astro", {
-        capabilities = capabilities,
-        init_options = {
-          typescript = tsdk and { tsdk = tsdk } or {},
-        },
-      })
-      vim.lsp.enable("astro")
+      -- vim.lsp.config("astro", {
+      --   capabilities = capabilities,
+      --   init_options = {
+      --     typescript = tsdk and { tsdk = tsdk } or {},
+      --   },
+      -- })
+      -- vim.lsp.enable("astro")
     end,
   },
 }

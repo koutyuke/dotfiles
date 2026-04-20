@@ -161,12 +161,17 @@ LSP / formatter は Nix 側で入れています。
 
 - `astro-language-server`
 - `lua-language-server`
+- `marksman`
 - `nixd`
+- `oxfmt`
 - `shellcheck`
 - `shfmt`
 - `stylua`
+- `taplo`
 - `typescript`
 - `typescript-language-server`
+- `vscode-langservers-extracted`
+- `yaml-language-server`
 
 意図は明確です。
 
@@ -238,6 +243,18 @@ nvim --headless "+Lazy! sync" +qa
 
 Lua 側だけ足しても binary がなければ動きません。
 逆に Nix 側だけ足しても LSP の設定がなければ attach しません。
+
+### 保存時 format を追加したい
+
+[`nvim/lua/plugins/lsp.lua`](../nvim/lua/plugins/lsp.lua)
+の `conform.nvim` 設定で `format_on_save` と `formatters_by_ft` を編集します。
+
+今の構成では次の方針です。
+
+- `:w` で保存すると、configured formatter が自動実行される
+- formatter がない filetype だけ LSP format に fallback する
+- `json` / `yaml` / `toml` / `markdown` は `oxfmt` を使う
+- `oxfmt` は `PATH` で最初に見つかったものを使う
 
 ## トラブルシュート
 
