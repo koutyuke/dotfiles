@@ -52,6 +52,7 @@
       ".direnv"
       ".serena"
       ".koutyuke"
+      ".nvim.lua"
     ];
   };
 }
