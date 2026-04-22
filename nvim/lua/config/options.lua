@@ -30,6 +30,13 @@ opt.exrc = true
 opt.laststatus = 3
 opt.showmode = false
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
+
 vim.diagnostic.config({
   float = true,
   signs = true,
