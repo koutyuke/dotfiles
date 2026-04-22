@@ -7,6 +7,48 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    config = function(_, opts)
+      require("conform").setup(opts)
+
+      local group = vim.api.nvim_create_augroup("config.trim_final_newlines", {
+        clear = true,
+      })
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        callback = function(args)
+          if vim.bo[args.buf].buftype ~= "" then
+            return
+          end
+
+          if vim.bo[args.buf].binary or not vim.bo[args.buf].modifiable then
+            return
+          end
+
+          local editorconfig = vim.b[args.buf].editorconfig
+          if not editorconfig or editorconfig.insert_final_newline ~= "true" then
+            return
+          end
+
+          local view = vim.fn.winsaveview()
+          local last = vim.api.nvim_buf_line_count(args.buf)
+
+          while last > 1 do
+            local line = vim.api.nvim_buf_get_lines(args.buf, last - 1, last, false)[1]
+            if not line:match("^%s*$") then
+              break
+            end
+
+            vim.api.nvim_buf_set_lines(args.buf, last - 1, last, false, {})
+            last = last - 1
+          end
+
+          vim.bo[args.buf].fixendofline = true
+          vim.bo[args.buf].endofline = true
+          vim.fn.winrestview(view)
+        end,
+      })
+    end,
     opts = {
       format_on_save = {
         timeout_ms = 500,
