@@ -32,6 +32,9 @@
   ];
 
   homebrew = {
+    brews = [
+      "vite-plus"
+    ];
     casks = [
       "aws-vpn-client"
     ];
