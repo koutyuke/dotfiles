@@ -17,6 +17,8 @@
       # Managed by Homebrew via nix-darwin because it is not recognized in settings unless placed in /Applications.
       "azookey"
 
+      "google-chrome"
+
       # Managed by Homebrew via nix-darwin because the app needs kernel extension/system integration for keyboard remapping.
       "karabiner-elements"
 
