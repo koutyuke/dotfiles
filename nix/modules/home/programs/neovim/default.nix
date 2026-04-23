@@ -39,6 +39,7 @@ in
       taplo
       typescript
       typescript-language-server
+      tailwindcss-language-server
       vscode-langservers-extracted
       yaml-language-server
     ];
