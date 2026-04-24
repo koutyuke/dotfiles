@@ -1,8 +1,33 @@
 final: prev: {
   brewCasks = prev.brewCasks // {
-    # 7zz extracts the DMG into DbVisualizer/DbVisualizer.app/ instead of DbVisualizer.app/
+    # undmg fails on DbVisualizer's DMG; 7zz extracts it into DbVisualizer/DbVisualizer.app/.
     dbvisualizer = prev.brewCasks.dbvisualizer.overrideAttrs (_: {
-      sourceRoot = "DbVisualizer/DbVisualizer.app";
+      sourceRoot = "DbVisualizer.app";
+      unpackPhase = ''
+        set -euo pipefail
+        7zz x -snld "$src"
+        mv DbVisualizer/DbVisualizer.app .
+        find . -maxdepth 1 -type l -delete
+      '';
+    });
+
+    # Raycast's DMG currently extracts into Raycast/Raycast.app/ instead of Raycast.app/.
+    raycast = prev.brewCasks.raycast.overrideAttrs (_: {
+      sourceRoot = "Raycast.app";
+      unpackPhase = ''
+        set -euo pipefail
+        7zz x -snld "$src"
+        mv Raycast/Raycast.app .
+        find . -maxdepth 1 -type l -delete
+      '';
+    });
+
+    # Postman's download URL omits the .zip suffix, so brew-nix falls back to 7zz and breaks symlinks.
+    postman = prev.brewCasks.postman.overrideAttrs (_: {
+      unpackPhase = ''
+        set -euo pipefail
+        unzip "$src"
+      '';
     });
 
     coteditor = prev.brewCasks.coteditor.overrideAttrs (oldAttrs: {
@@ -41,7 +66,7 @@ final: prev: {
     spotify = prev.brewCasks.spotify.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
         url = builtins.head oldAttrs.src.urls;
-        hash = "sha256-fal0iJ/DkJXPCSUOVPj9I8Srco2GTpt4pVA8N6PD2z8=";
+        hash = "sha256-NHEoNIFFGMMEYDeHTmIp6dKwvs/JYocmdVEYbJsUj8c=";
       };
     });
 

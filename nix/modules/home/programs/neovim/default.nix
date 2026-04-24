@@ -25,6 +25,7 @@ in
     withNodeJs = true;
     withPython3 = false;
     withRuby = false;
+    sideloadInitLua = true;
 
     extraPackages = with pkgs; [
       astro-language-server
