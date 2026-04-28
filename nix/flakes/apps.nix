@@ -12,11 +12,15 @@ _: {
             nix flake update
 
             echo ""
+            echo "🛠️ Applying system updates managed by nix-darwin/home-manager..."
+            darwin-rebuild switch --flake .#koutyuke
+
+            echo ""
             echo "🧹 Running garbage collection..."
             nix-collect-garbage -d
 
             echo ""
-            echo "✅ Flake inputs have been updated. Run 'darwin-rebuild switch --flake .#{hostname}' to apply changes."
+            echo "✅ Flake inputs have been updated and system updates have been applied."
           ''
         );
       };
@@ -45,6 +49,10 @@ _: {
             echo ""
             echo "🛠️ Applying GUI updates managed by nix-darwin/home-manager..."
             darwin-rebuild switch --flake .#koutyuke
+
+            echo ""
+            echo "🧹 Running garbage collection..."
+            nix-collect-garbage -d
 
             echo ""
             echo "✅ GUI application updates have been applied."
