@@ -20,5 +20,36 @@ _: {
           ''
         );
       };
+
+      apps.update-gui = {
+        type = "app";
+        program = toString (
+          pkgs.writeShellScript "update-gui" ''
+            set -euo pipefail
+
+            echo "🔄 Updating brew-api input for brewCasks..."
+            nix flake update brew-api
+
+            echo ""
+            echo "🍺 Updating Homebrew metadata..."
+            brew update
+
+            echo ""
+            echo "🖥️ Upgrading Homebrew casks..."
+            brew upgrade --cask
+
+            echo ""
+            echo "🏪 Upgrading Mac App Store apps..."
+            mas upgrade
+
+            echo ""
+            echo "🛠️ Applying GUI updates managed by nix-darwin/home-manager..."
+            darwin-rebuild switch --flake .#koutyuke
+
+            echo ""
+            echo "✅ GUI application updates have been applied."
+          ''
+        );
+      };
     };
 }
