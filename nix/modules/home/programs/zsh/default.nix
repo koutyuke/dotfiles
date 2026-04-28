@@ -1,4 +1,7 @@
-{ ... }:
+{
+  lib,
+  ...
+}:
 let
   readDir =
     dir:
@@ -18,14 +21,12 @@ in
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    completionInit = ":";
 
-    oh-my-zsh = {
+    antidote = {
       enable = true;
       plugins = [
-        "git"
-        "copypath"
-        "sudo"
-        "extract"
+        "mattmc3/ez-compinit"
       ];
     };
 
@@ -33,11 +34,19 @@ in
       LANG = "ja_JP.UTF-8";
     };
 
-    initContent = builtins.concatStringsSep "\n" (
-      [
-        (builtins.readFile ./config.zsh)
-      ]
-      ++ (readDir ./functions)
-    );
+    initContent = lib.mkMerge [
+      (lib.mkOrder 540 ''
+        zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+        zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
+      '')
+      (lib.mkOrder 1000 (
+        builtins.concatStringsSep "\n" (
+          [
+            (builtins.readFile ./config.zsh)
+          ]
+          ++ (readDir ./functions)
+        )
+      ))
+    ];
   };
 }
