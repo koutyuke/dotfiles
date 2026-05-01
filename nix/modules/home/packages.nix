@@ -53,7 +53,6 @@
   ++ (with pkgs.brewCasks; [
     canva
     chatgpt
-    clipy
     codex-app
     coteditor
     cursor

@@ -1,7 +1,8 @@
 {
   imports = [
-    ./zsh
     ./lazygit
+    ./neovim
+    ./zsh
 
     ./bat.nix
     ./direnv.nix
@@ -10,7 +11,6 @@
     ./ghostty.nix
     ./git.nix
     ./gpg.nix
-    ./neovim
     ./starship.nix
     ./tmux.nix
     ./zoxide.nix
