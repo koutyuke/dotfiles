@@ -26,22 +26,6 @@ export SAVEHIST=2000
 # beep
 setopt NO_BEEP
 
-# menu UI
-zstyle ':completion:*' menu select
-zstyle ':completion:*' group-name ''
-
-# nicer messages
-zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
-zstyle ':completion:*:warnings' format '%F{red}%d%f'
-
-# smarter matching
-zstyle ':completion:*' matcher-list \
-  'm:{a-z}={A-Z}' \
-  'r:|[-_]=* r:|=*'
-
-# cache
-zstyle ':completion:*' use-cache yes
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# dirs
+# completion
+zstyle ':completion:*' special-dirs false
 zstyle ':completion:*' list-dirs-first true
