@@ -123,6 +123,13 @@ Prerequisites:
 - macOS on Apple Silicon
 - Nix is already installed
 - `darwin-rebuild` is available
+- Homebrew is installed via the official installer (this repository no longer manages the Homebrew installation itself; only `homebrew.casks` and `homebrew.masApps` are managed declaratively by `nix-darwin`)
+
+Install Homebrew once per machine before the first `darwin-rebuild`:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 Apply the configuration:
 
@@ -162,5 +169,6 @@ For detailed package placement rules, see [`docs/package-management.md`](./docs/
 ## Notes
 
 - `brew-nix` is enabled, so GUI applications are split between `pkgs.brewCasks` and `homebrew.casks`
+- Homebrew itself is intentionally installed via the official installer instead of `nix-homebrew`. The `nix-darwin` `homebrew.*` options drive the `brew` binary that already exists on the system, and `brew update` / `brew upgrade --cask` work without the read-only-prefix constraints that `nix-homebrew` imposes
 - Karabiner config is not copied into the Nix store; the repository's `karabiner/` directory is symlinked instead
 - `system.configurationRevision` is populated from the flake `rev` or `dirtyRev`
