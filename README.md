@@ -149,11 +149,26 @@ Format the repository:
 nix fmt
 ```
 
-Update flake inputs:
+Update flake inputs, apply the system, and run garbage collection:
 
 ```bash
 nix run .#update
 ```
+
+The first positional argument overrides the target host (defaults to `koutyuke`):
+
+```bash
+nix run .#update -- <host>
+```
+
+Update GUI applications (`brew-api` input, Homebrew casks, Mac App Store apps) together with the system:
+
+```bash
+nix run .#update-gui
+nix run .#update-gui -- <host>
+```
+
+Both apps cache `sudo` credentials up front, then run `darwin-rebuild switch` and the system-level `nix-collect-garbage -d` via `sudo`. `nix flake update` and `brew` commands intentionally run without `sudo`.
 
 ## Change Guidelines
 

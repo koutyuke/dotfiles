@@ -8,16 +8,22 @@ _: {
           pkgs.writeShellScript "update-and-gc" ''
             set -euo pipefail
 
+            host="''${1:-koutyuke}"
+
+            echo "🔐 Caching sudo credentials..."
+            sudo -v
+
+            echo ""
             echo "🔄 Updating flake inputs..."
             nix flake update
 
             echo ""
-            echo "🛠️ Applying system updates managed by nix-darwin/home-manager..."
-            darwin-rebuild switch --flake .#koutyuke
+            echo "🛠️ Applying system updates managed by nix-darwin/home-manager for host '$host'..."
+            sudo darwin-rebuild switch --flake ".#$host"
 
             echo ""
             echo "🧹 Running garbage collection..."
-            nix-collect-garbage -d
+            sudo nix-collect-garbage -d
 
             echo ""
             echo "✅ Flake inputs have been updated and system updates have been applied."
@@ -31,6 +37,12 @@ _: {
           pkgs.writeShellScript "update-gui" ''
             set -euo pipefail
 
+            host="''${1:-koutyuke}"
+
+            echo "🔐 Caching sudo credentials..."
+            sudo -v
+
+            echo ""
             echo "🔄 Updating brew-api input for brewCasks..."
             nix flake update brew-api
 
@@ -47,12 +59,12 @@ _: {
             mas upgrade
 
             echo ""
-            echo "🛠️ Applying GUI updates managed by nix-darwin/home-manager..."
-            darwin-rebuild switch --flake .#koutyuke
+            echo "🛠️ Applying GUI updates managed by nix-darwin/home-manager for host '$host'..."
+            sudo darwin-rebuild switch --flake ".#$host"
 
             echo ""
             echo "🧹 Running garbage collection..."
-            nix-collect-garbage -d
+            sudo nix-collect-garbage -d
 
             echo ""
             echo "✅ GUI application updates have been applied."
