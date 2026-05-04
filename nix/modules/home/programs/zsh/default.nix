@@ -39,6 +39,12 @@ in
       LANG = "ja_JP.UTF-8";
     };
 
+    profileExtra = ''
+      if [ -x /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+    '';
+
     initContent = lib.mkMerge [
       (lib.mkOrder 540 ''
         zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
