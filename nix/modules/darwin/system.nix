@@ -111,6 +111,9 @@
       "com.apple.AppleMultitouchTrackpad" = {
         TrackpadFiveFingerPinchGesture = 2; # 0: disabled, 2: mission control
       };
+      "com.apple.batteryui.charging.mac" = {
+        "com.apple.batteryui.charging.mac.prior.limit" = 80; # must be restarted to take effect
+      };
       "com.apple.desktopservices" = {
         DSDontWriteNetworkStores = true; # DS_Store
         DSDontWriteUSBStores = true; # DS_Store
