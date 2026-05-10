@@ -18,6 +18,7 @@
         cwd = "copypath";
         gwd = "open -a ghostty $PWD";
         nv = "nvim";
+        dot = "dotfiles";
 
         # git
         g = "git";
