@@ -18,9 +18,9 @@
   };
 
   networking = {
-    computerName = "koutyuke's MacBook Pro for Cyboze";
-    hostName = "cyboze-koutyuke";
-    localHostName = "cyboze-koutyuke";
+    computerName = "koutyuke's MacBook Pro for Cybozu";
+    hostName = "cybozu-koutyuke";
+    localHostName = "cybozu-koutyuke";
   };
 
   environment.systemPackages = with pkgs.brewCasks; [

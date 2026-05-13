@@ -23,7 +23,6 @@
           name = "koutyuke";
           email = "75959529+koutyuke@users.noreply.github.com";
           signingKey = ""; # GPG key ID: gpg --list-secret-keys --keyid-format=long
-
         };
         github = {
           user = "koutyuke";

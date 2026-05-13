@@ -15,6 +15,16 @@ in
           (import ../overlays/packages.nix)
         ];
       };
+      cybozu = mkDarwinSystem {
+        system = "aarch64-darwin";
+        hostConfiguration = ../hosts/cyboze/configuration.nix;
+        overlays = [
+          inputs.brew-nix.overlays.default
+          inputs.llm-agents.overlays.default
+          (import ../overlays/brew-casks.nix)
+          (import ../overlays/packages.nix)
+        ];
+      };
     };
   };
 }
