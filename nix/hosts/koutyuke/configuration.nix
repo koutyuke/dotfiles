@@ -36,8 +36,16 @@
       "aws-vpn-client"
     ];
     masApps = {
+      "1Password for Safari" = 1569813296;
+      "Dropover" = 1355679052;
       "Goodnotes" = 1444383602;
+      "iMovie" = 408981434;
+      "Keynote" = 409183694;
+      "Magnet" = 441258766;
+      "Numbers" = 409203825;
+      "Pages" = 409201541;
       "Prime Video" = 545519333;
+      "Xcode" = 497799835;
     };
   };
 }
