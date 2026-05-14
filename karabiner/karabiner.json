@@ -99,12 +99,19 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow", "modifiers": ["option"]
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["ansi", "iso"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "open_bracket",
                                     "modifiers": {
@@ -112,12 +119,6 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "conditions": [
-                                    {
-                                        "type": "keyboard_type_if",
-                                        "keyboard_types": ["ansi", "iso"]
-                                    }
-                                ],
                                 "to": [
                                     {
                                         "key_code": "left_arrow",
@@ -127,6 +128,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["jis"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "close_bracket",
                                     "modifiers": {
@@ -134,12 +141,6 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "conditions": [
-                                    {
-                                        "type": "keyboard_type_if",
-                                        "keyboard_types": ["jis"]
-                                    }
-                                ],
                                 "to": [
                                     {
                                         "key_code": "left_arrow",
@@ -149,6 +150,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["ansi", "iso"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "close_bracket",
                                     "modifiers": {
@@ -156,12 +163,6 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "conditions": [
-                                    {
-                                        "type": "keyboard_type_if",
-                                        "keyboard_types": ["ansi", "iso"]
-                                    }
-                                ],
                                 "to": [
                                     {
                                         "key_code": "right_arrow",
@@ -171,6 +172,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["jis"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "backslash",
                                     "modifiers": {
@@ -178,12 +185,6 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "conditions": [
-                                    {
-                                        "type": "keyboard_type_if",
-                                        "keyboard_types": ["jis"]
-                                    }
-                                ],
                                 "to": [
                                     {
                                         "key_code": "right_arrow",
