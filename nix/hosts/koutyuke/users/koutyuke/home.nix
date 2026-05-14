@@ -4,8 +4,8 @@
     ../../../../modules/home
   ];
 
-  home.username = "kousuke";
-  home.homeDirectory = "/Users/kousuke";
+  home.username = "koutyuke";
+  home.homeDirectory = "/Users/koutyuke";
 
   home.stateVersion = "25.11";
 
@@ -28,7 +28,7 @@
         user = {
           name = "koutyuke";
           email = "75959529+koutyuke@users.noreply.github.com";
-          signingKey = "B34E9BB29DE45A4C"; # GPG key ID: gpg --list-secret-keys --keyid-format=long
+          signingKey = ""; # GPG key ID: gpg --list-secret-keys --keyid-format=long
 
         };
         github = {

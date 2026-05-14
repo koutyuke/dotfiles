@@ -5,16 +5,16 @@
   ];
 
   system = {
-    primaryUser = "kousuke";
+    primaryUser = "koutyuke";
     stateVersion = 6;
   };
 
   users.users = {
-    kousuke.home = "/Users/kousuke";
+    koutyuke.home = "/Users/koutyuke";
   };
 
   home-manager.users = {
-    kousuke = ./users/kousuke/home.nix;
+    koutyuke = ./users/koutyuke/home.nix;
   };
 
   networking = {
