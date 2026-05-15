@@ -14,13 +14,12 @@
     mise
     nixfmt
 
-    # JavaScript and application development
+    # Application development
     act
-    bun
     lefthook
     ni
-    nodejs_24
     openssl
+    oxfmt
     postgresql
     watchman
 

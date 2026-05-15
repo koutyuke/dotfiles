@@ -11,6 +11,7 @@
     ./ghostty.nix
     ./git.nix
     ./gpg.nix
+    ./javascript.nix
     ./starship.nix
     ./tmux.nix
     ./zoxide.nix
