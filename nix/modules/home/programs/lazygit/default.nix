@@ -41,6 +41,7 @@ in
 
     settings = {
       gui = {
+        fileTreeSortOrder = "foldersFirst";
         nerdFontsVersion = "3";
       };
 
