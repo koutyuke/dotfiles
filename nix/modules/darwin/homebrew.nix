@@ -23,7 +23,7 @@
       "karabiner-elements"
 
       # Managed by Homebrew via nix-darwin because the app becomes broken when trying to install via brew-nix.
-      "orbstack"
+      # "orbstack"
     ];
 
     masApps = {
