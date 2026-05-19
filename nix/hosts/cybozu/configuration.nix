@@ -31,6 +31,7 @@
   homebrew = {
     casks = [
       "docker"
+      "iina"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
@@ -40,7 +41,6 @@
       "Magnet" = 441258766;
       # "Numbers" = 409203825;
       # "Pages" = 409201541;
-      "Prime Video" = 545519333;
     };
   };
 }
