@@ -14,6 +14,8 @@
     [
     ]
     ++ (with pkgs.brewCasks; [
+      iina
+      intellij-idea
     ]);
 
   programs = {
@@ -22,7 +24,13 @@
         user = {
           name = "koutyuke";
           email = "75959529+koutyuke@users.noreply.github.com";
-          signingKey = "0xDB6FAAEC2B7504C3"; # GPG key ID: gpg --list-secret-keys --keyid-format=long
+          signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJyByIDlc1RwBvu9dOKY0UKldrUrdT7pl5bxGCnO42E6";
+        };
+        gpg = {
+          format = "ssh";
+          ssh = {
+            program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          };
         };
         github = {
           user = "koutyuke";
@@ -33,5 +41,4 @@
       enable = true;
     };
   };
-
 }
