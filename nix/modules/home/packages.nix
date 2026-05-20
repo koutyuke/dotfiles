@@ -11,7 +11,6 @@
     tree
 
     # Nix and environment management
-    mise
     nixfmt
 
     # Application development

@@ -12,6 +12,7 @@
     ./git.nix
     ./gpg.nix
     ./javascript.nix
+    ./mise.nix
     ./starship.nix
     ./tmux.nix
     ./zoxide.nix
