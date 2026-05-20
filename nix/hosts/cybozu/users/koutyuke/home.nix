@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../../../../modules/home
@@ -12,6 +16,7 @@
   home.packages =
     with pkgs;
     [
+      bash
     ]
     ++ (with pkgs.brewCasks; [
       iina
@@ -39,6 +44,13 @@
     };
     home-manager = {
       enable = true;
+    };
+    zsh = {
+      initContent = lib.mkAfter ''
+        if [ -r /Users/koutyuke/.config/op/plugins.sh ]; then
+          source /Users/koutyuke/.config/op/plugins.sh
+        fi
+      '';
     };
   };
 }
