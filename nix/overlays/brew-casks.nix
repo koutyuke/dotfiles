@@ -50,7 +50,7 @@ final: prev: {
     istat-menus = prev.brewCasks.istat-menus.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
         url = builtins.head oldAttrs.src.urls;
-        hash = "sha256-yD9gfObD2z2krFKflq/nalAwY8wh0CtCwx+2f2oRRaY=";
+        hash = "sha256-qCgMEUjHUsEP+B+e2nylse9T/Xnt765RzV0WtBSWSPY=";
       };
     });
 

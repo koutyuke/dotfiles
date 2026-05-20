@@ -143,6 +143,29 @@ Build without switching:
 darwin-rebuild build --flake .#koutyuke
 ```
 
+> [!IMPORTANT]
+> This repository uses Determinate Nix, so Nix daemon settings are managed
+> through `determinateNix.customSettings` instead of `nix.settings`. During
+> first-time bootstrap, these settings have not been applied yet. Write the
+> `llm-agents` binary cache settings to `/etc/nix/nix.custom.conf` first, then
+> switch:
+>
+> ```bash
+> sudo install -m 0644 docs/nix.custom.conf.bootstrap.tmpl /etc/nix/nix.custom.conf
+> sudo launchctl kickstart -k system/systems.determinate.nix-daemon
+> sudo darwin-rebuild switch --flake .#koutyuke
+> ```
+>
+> After the first successful switch, `/etc/nix/nix.custom.conf` is managed by
+> `nix-darwin`. If a manually created `/etc/nix/nix.custom.conf` blocks
+> activation as an unmanaged file, check that it contains no critical local-only
+> settings, rename it, and run the switch again:
+>
+> ```bash
+> sudo mv /etc/nix/nix.custom.conf /etc/nix/nix.custom.conf.before-nix-darwin
+> sudo darwin-rebuild switch --flake .#koutyuke
+> ```
+
 Format the repository:
 
 ```bash
