@@ -6,7 +6,7 @@
       AppleShowAllExtensions = true;
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
-      InitialKeyRepeat = 15;
+      InitialKeyRepeat = 25;
       KeyRepeat = 2;
       NSTableViewDefaultSizeMode = 2;
       "com.apple.keyboard.fnState" = true;
