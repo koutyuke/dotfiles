@@ -7,7 +7,10 @@
 let
   ghosttySettings = {
     theme = "Catppuccin Mocha";
-    font-family = "\"JetBrainsMono Nerd Font Mono\"";
+    font-family = [
+      "\"JetBrainsMono Nerd Font Mono\""
+      "\"Hiragino Sans\""
+    ];
     background-opacity = 0.9;
     background-blur = true;
     macos-icon = "xray";
