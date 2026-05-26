@@ -21,6 +21,7 @@
     ++ (with pkgs.brewCasks; [
       iina
       intellij-idea
+      jetbrains-toolbox
     ]);
 
   programs = {
