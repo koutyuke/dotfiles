@@ -71,7 +71,7 @@
                         ]
                     },
                     {
-                        "description": "Command+Option+Control+W/B/[/] -> Option+Left/Option+Right/Cmd+Left/Cmd+Right",
+                        "description": "Command+Option+Control+W/B/4/0/Backspace -> Option+Left/Option+Right/Cmd+Left/Cmd+Right/Delete",
                         "manipulators": [
                             {
                                 "from": {
@@ -106,14 +106,8 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": ["ansi", "iso"],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "open_bracket",
+                                    "key_code": "4",
                                     "modifiers": {
                                         "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
@@ -128,36 +122,8 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": ["jis"],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": {
-                                        "mandatory": ["command", "option", "control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": ["ansi", "iso"],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "close_bracket",
+                                    "key_code": "0",
                                     "modifiers": {
                                         "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
@@ -172,25 +138,14 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": ["jis"],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "backslash",
+                                    "key_code": "delete_or_backspace",
                                     "modifiers": {
                                         "mandatory": ["command", "option", "control"],
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
+                                "to": [{ "key_code": "delete_forward" }],
                                 "type": "basic"
                             }
                         ]
