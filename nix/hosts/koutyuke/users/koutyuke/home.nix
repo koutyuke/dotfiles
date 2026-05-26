@@ -28,8 +28,13 @@
         user = {
           name = "koutyuke";
           email = "75959529+koutyuke@users.noreply.github.com";
-          signingKey = "C339D6D586557B3C"; # GPG key ID: gpg --list-secret-keys --keyid-format=long
-
+          signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBk2xkj3CF9EUtfkrLUiicfi3ozSgGEEmT/KECKfvqEy";
+        };
+        gpg = {
+          format = "ssh";
+          ssh = {
+            program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          };
         };
         github = {
           user = "koutyuke";
