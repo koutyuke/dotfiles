@@ -10,7 +10,6 @@
     ./gh.nix
     ./ghostty.nix
     ./git.nix
-    ./gpg.nix
     ./javascript.nix
     ./mise.nix
     ./starship.nix

@@ -110,7 +110,7 @@ Responsibilities are split as follows:
 - [`nix/modules/home/packages.nix`](./nix/modules/home/packages.nix)
   - shared CLI and GUI packages
 - [`nix/modules/home/programs/default.nix`](./nix/modules/home/programs/default.nix)
-  - imports program-specific configuration for `bat`, `direnv`, `fzf`, `gh`, `git`, `gpg`, `ghostty`, `starship`, and `zsh`
+  - imports program-specific configuration for `bat`, `direnv`, `fzf`, `gh`, `git`, `ghostty`, `starship`, and `zsh`
 - [`nix/hosts/koutyuke/configuration.nix`](./nix/hosts/koutyuke/configuration.nix)
   - host-specific system settings and additional applications
 - [`nix/hosts/koutyuke/users/kousuke/home.nix`](./nix/hosts/koutyuke/users/kousuke/home.nix)
