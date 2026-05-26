@@ -4,6 +4,7 @@
     shellAliases = {
       cd = "z";
       ls = "eza --icons=auto --group-directories-first";
+      grep = "rg";
     };
 
     zsh-abbr = {
