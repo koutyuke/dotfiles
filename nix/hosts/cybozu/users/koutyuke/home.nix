@@ -22,6 +22,7 @@
       iina
       intellij-idea
       jetbrains-toolbox
+      zed
     ]);
 
   programs = {
