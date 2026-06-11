@@ -57,6 +57,7 @@
     dbvisualizer
     devtoys
     figma
+    iina
     keyboardcleantool
     nani
     notion
@@ -64,5 +65,6 @@
     postman
     spotify
     the-unarchiver
+    zed
   ]);
 }

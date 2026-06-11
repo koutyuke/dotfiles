@@ -43,6 +43,7 @@
       # "iMovie" = 408981434;
       # "Keynote" = 409183694;
       "Magnet" = 441258766;
+      "Microsoft Word" = 462054704;
       # "Numbers" = 409203825;
       # "Pages" = 409201541;
       "Prime Video" = 545519333;

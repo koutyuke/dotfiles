@@ -19,10 +19,8 @@
       bash
     ]
     ++ (with pkgs.brewCasks; [
-      iina
       intellij-idea
       jetbrains-toolbox
-      zed
     ]);
 
   programs = {
