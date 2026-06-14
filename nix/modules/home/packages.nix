@@ -4,42 +4,37 @@
     pkgs.brewCasks."jordanbaird-ice@beta"
   ]
   ++ (with pkgs; [
-    # Shell and search
-    eza
-    fd
-    ripgrep
-    tree
-
-    # Nix and environment management
-    nixfmt
-
-    # Application development
+    # Development tools
     act
-    lefthook
-    ni
-    openssl
-    oxfmt
-    postgresql
-    watchman
-
     cocoapods
-    uv
-
-    # API and data tools
+    delta
+    eza
+    fastfetch
+    fd
+    ffmpeg
+    ghq
     httpie
     jnv
     jq
+    lazydocker
+    lefthook
+    mas
+    ni
+    openssl
+    postgresql
+    ripgrep
+    tree
+    uv
+    watchman
     yq-go
 
-    # Git and repository tools
-    delta
-    ghq
-    lazydocker
+    # Linting and formatting
+    nixfmt
+    oxfmt
+    shellcheck
 
-    # System utilities
-    fastfetch
-    ffmpeg
-    mas
+    # LSP
+    nixd
 
     # GUI applications from nixpkgs
     vscode
