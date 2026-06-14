@@ -71,5 +71,33 @@ _: {
           ''
         );
       };
+      apps.update-ai = {
+        type = "app";
+        program = toString (
+          pkgs.writeShellScript "update-ai" ''
+            set -euo pipefail
+
+            host="''${1:-koutyuke}"
+
+            echo "🔐 Caching sudo credentials..."
+            sudo -v
+
+            echo ""
+            echo "🔄 Updating AI models..."
+            nix flake update llm-agents
+
+            echo ""
+            echo "🛠️ Applying GUI updates managed by nix-darwin/home-manager for host '$host'..."
+            sudo darwin-rebuild switch --flake ".#$host"
+
+            echo ""
+            echo "🧹 Running garbage collection..."
+            sudo nix-collect-garbage -d
+
+            echo ""
+            echo "✅ AI model updates have been applied."
+          ''
+        );
+      };
     };
 }
