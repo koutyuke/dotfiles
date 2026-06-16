@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   programs.git = {
     enable = true;
@@ -43,7 +43,7 @@
       };
 
       ghq = {
-        root = "~/Desktop/projects";
+        root = config.me.dotfiles.projectsRoot;
       };
     };
 
@@ -51,7 +51,7 @@
       ".DS_Store"
       ".direnv"
       ".serena"
-      ".koutyuke"
+      config.me.project.personalDirectoryName
       ".nvim.lua"
     ];
   };

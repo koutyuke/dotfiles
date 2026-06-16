@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ../../../../modules/home
@@ -8,6 +8,14 @@
   home.homeDirectory = "/Users/koutyuke";
 
   home.stateVersion = "25.11";
+
+  me = {
+    dotfiles = {
+      projectsRoot = "${config.home.homeDirectory}/src";
+      root = "${config.me.dotfiles.projectsRoot}/github.com/koutyuke/dotfiles";
+    };
+    project.personalDirectoryName = ".koutyuke";
+  };
 
   home.packages =
     with pkgs;
@@ -45,5 +53,4 @@
       enable = true;
     };
   };
-
 }

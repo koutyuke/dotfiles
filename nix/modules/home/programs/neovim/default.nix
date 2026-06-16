@@ -5,7 +5,7 @@
   ...
 }:
 let
-  repoRoot = "${config.home.homeDirectory}/Desktop/projects/koutyuke/dotfiles";
+  repoRoot = config.me.dotfiles.root;
   nvimSourceDir = "${repoRoot}/nvim";
   nvimConfigDir = "${config.xdg.configHome}/nvim";
   nvimStateDir = "${config.xdg.stateHome}/nvim";
