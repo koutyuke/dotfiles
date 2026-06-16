@@ -32,6 +32,12 @@
   ];
 
   homebrew = {
+    brews = [
+      {
+        name = "ollama";
+        restart_service = "changed";
+      }
+    ];
     casks = [
       "aws-vpn-client"
       "orbstack"
