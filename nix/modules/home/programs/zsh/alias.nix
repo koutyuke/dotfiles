@@ -20,6 +20,8 @@
         gwd = "open -a ghostty $PWD";
         nv = "nvim";
         dot = "dotfiles";
+        cc = "claude";
+        cx = "codex";
 
         # git
         g = "git";
