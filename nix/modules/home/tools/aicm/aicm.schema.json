@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://koutyuke.local/schemas/aicm.schema.json",
+  "title": "aicm config",
+  "description": "Configuration for the aicm commit message generator.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema URI for editor support."
+    },
+    "provider": {
+      "type": "string",
+      "description": "Agent provider used to generate commit messages.",
+      "enum": [
+        "codex",
+        "claude",
+        "ollama"
+      ],
+      "default": "codex"
+    },
+    "model": {
+      "type": "string",
+      "description": "Model name passed to the selected provider. If omitted, a provider-specific default is used.",
+      "minLength": 1
+    },
+    "output": {
+      "type": "string",
+      "description": "Output mode for the generated commit message.",
+      "enum": [
+        "print",
+        "copy",
+        "cmd"
+      ],
+      "default": "print"
+    },
+    "ollamaHost": {
+      "type": "string",
+      "description": "Ollama server URL. Used only when provider is ollama.",
+      "format": "uri",
+      "default": "http://127.0.0.1:11434"
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Inline prompt for commit message generation. Takes precedence over promptFile.",
+      "minLength": 1
+    },
+    "promptFile": {
+      "type": "string",
+      "description": "Path to a prompt file. Relative paths are resolved from the repository root.",
+      "minLength": 1
+    }
+  }
+}
