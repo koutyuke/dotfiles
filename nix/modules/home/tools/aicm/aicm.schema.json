@@ -25,6 +25,18 @@
       "description": "Model name passed to the selected provider. If omitted, a provider-specific default is used.",
       "minLength": 1
     },
+    "effort": {
+      "type": "string",
+      "description": "Reasoning effort passed to the selected provider. If omitted, provider-specific defaults are used: codex uses none, claude uses low, and ollama ignores effort.",
+      "enum": [
+        "none",
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ]
+    },
     "output": {
       "type": "string",
       "description": "Output mode for the generated commit message.",
