@@ -1,8 +1,11 @@
 {
+  config,
   lib,
   ...
 }:
 let
+  onePasswordPlugins = "${config.home.homeDirectory}/.config/op/plugins.sh";
+
   readDir =
     dir:
     let
@@ -56,6 +59,11 @@ in
           ++ (readDir ./functions)
         )
       ))
+      (lib.mkAfter ''
+        if [ -r ${lib.escapeShellArg onePasswordPlugins} ]; then
+          source ${lib.escapeShellArg onePasswordPlugins}
+        fi
+      '')
     ];
   };
 }
