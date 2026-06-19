@@ -30,8 +30,6 @@ in
       plugins = [
         "mattmc3/ez-compinit"
         "getantidote/use-omz"
-        "ohmyzsh/ohmyzsh path:plugins/sudo kind:defer"
-        "ohmyzsh/ohmyzsh path:plugins/extract kind:defer"
       ];
     };
 
