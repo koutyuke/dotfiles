@@ -14,7 +14,7 @@
         "$directory"
         "[](fg:#043c64 bg:#064f84)"
         "$git_branch"
-        "$git_status"
+        # "$git_status"
         "[](fg:#064f84 bg:#2A6F97)"
         "$c"
         "$elixir"
@@ -109,6 +109,7 @@
       };
 
       git_status = {
+        disabled = true;
         style = "bg:#064f84";
         format = "[$all_status$ahead_behind ]($style)";
       };
