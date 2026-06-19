@@ -46,6 +46,12 @@ final: prev: {
       '';
     });
 
+    zed = prev.brewCasks.zed.overrideAttrs (oldAttrs: {
+      installPhase = (oldAttrs.installPhase or "") + ''
+        rm -f "$out/bin/zed"
+      '';
+    });
+
     # Keep the upstream URL and only update the fixed-output hash.
     istat-menus = prev.brewCasks.istat-menus.overrideAttrs (oldAttrs: {
       src = prev.fetchurl {
