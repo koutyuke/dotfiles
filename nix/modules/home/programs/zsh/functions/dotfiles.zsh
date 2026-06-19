@@ -1,6 +1,6 @@
 # Open dotfiles project directory
 function dotfiles() {
-  local dotfiles_dir="${DOTFILES_DIR:-$HOME/src/github.com/koutyuke/dotfiles}"
+  local dotfiles_dir="${DOTFILES_DIR:-$HOME/Developer/github/koutyuke/dotfiles}"
 
   if [[ ! -d "$dotfiles_dir" ]]; then
     echo "dotfiles directory not found: $dotfiles_dir" >&2

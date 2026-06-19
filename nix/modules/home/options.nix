@@ -7,13 +7,13 @@
   options.me.dotfiles = {
     projectsRoot = lib.mkOption {
       type = lib.types.str;
-      default = "${config.home.homeDirectory}/src";
+      default = "${config.home.homeDirectory}/Developer";
       description = "The root directory where projects are stored.";
     };
 
     root = lib.mkOption {
       type = lib.types.str;
-      default = "${config.me.dotfiles.projectsRoot}/github.com/koutyuke/dotfiles";
+      default = "${config.me.dotfiles.projectsRoot}/github/koutyuke/dotfiles";
       description = "The path where this dotfiles repository is located.";
     };
   };
