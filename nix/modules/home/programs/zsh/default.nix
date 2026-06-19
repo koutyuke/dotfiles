@@ -32,7 +32,6 @@ in
       enable = true;
       plugins = [
         "mattmc3/ez-compinit"
-        "getantidote/use-omz"
       ];
     };
 
@@ -48,7 +47,7 @@ in
 
     initContent = lib.mkMerge [
       (lib.mkOrder 540 ''
-        zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+        zstyle ':plugin:ez-compinit' 'compstyle' 'prez'
         zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
       '')
       (lib.mkOrder 1000 (
