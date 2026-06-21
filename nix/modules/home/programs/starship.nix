@@ -65,11 +65,11 @@
         truncation_length = 3;
         truncation_symbol = "…/";
         substitutions = {
-          "Documents" = "󰈙 ";
-          "Downloads" = " ";
-          "Music" = "󰝚 ";
-          "Pictures" = " ";
-          "Developer" = "󰲳 ";
+          "Documents" = "󰈙 Documents";
+          "Downloads" = " Downloads";
+          "Music" = "󰝚 Music";
+          "Pictures" = " Pictures";
+          "Developer" = " Developer";
         };
       };
 
