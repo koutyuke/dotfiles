@@ -13,7 +13,7 @@
 
     root = lib.mkOption {
       type = lib.types.str;
-      default = "${config.me.dotfiles.projectsRoot}/github/koutyuke/dotfiles";
+      default = "${config.me.dotfiles.projectsRoot}/github.com/koutyuke/dotfiles";
       description = "The path where this dotfiles repository is located.";
     };
   };

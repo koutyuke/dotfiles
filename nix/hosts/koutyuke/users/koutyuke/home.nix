@@ -12,7 +12,7 @@
   me = {
     dotfiles = {
       projectsRoot = "${config.home.homeDirectory}/Developer";
-      root = "${config.me.dotfiles.projectsRoot}/github/koutyuke/dotfiles";
+      root = "${config.me.dotfiles.projectsRoot}/github.com/koutyuke/dotfiles";
     };
     project.personalDirectoryName = ".koutyuke";
   };
