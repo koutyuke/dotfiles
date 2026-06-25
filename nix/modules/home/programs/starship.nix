@@ -65,11 +65,11 @@
         truncation_length = 3;
         truncation_symbol = "…/";
         substitutions = {
-          "Documents" = "󰈙 Documents";
-          "Downloads" = " Downloads";
-          "Music" = "󰝚 Music";
-          "Pictures" = " Pictures";
-          "Developer" = " Developer";
+          "Documents" = "󰈙·Documents";
+          "Downloads" = "󰇚·Downloads";
+          "Music" = "󰝚·Music";
+          "Pictures" = "·Pictures";
+          "Developer" = "·Developer";
         };
       };
 
@@ -103,7 +103,7 @@
       };
 
       git_branch = {
-        symbol = "";
+        symbol = "";
         style = "bg:#064f84";
         format = "[ $symbol $branch ]($style)";
       };
