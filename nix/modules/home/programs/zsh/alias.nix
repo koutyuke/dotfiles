@@ -22,6 +22,7 @@
         dot = "dotfiles";
         cc = "claude";
         cx = "codex";
+        reload = "exec zsh -l";
 
         # git
         g = "git";
