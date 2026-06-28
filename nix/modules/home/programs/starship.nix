@@ -32,6 +32,7 @@
         "[](fg:#2A6F97 bg:#468FAF)"
         "$docker_context"
         "[](fg:#468FAF bg:#61A5C2)"
+        "$status"
         "$time"
         "[ ](fg:#61A5C2)\n"
         "$character\n"
@@ -171,6 +172,12 @@
         symbol = " ";
         style = "bg:#2A6F97";
         format = "[ $symbol ($version) ]($style)";
+      };
+
+      status = {
+        disabled = false;
+        style = "bg:#61A5C2";
+        format = "[ ✘ $status ]($style)";
       };
 
       time = {
