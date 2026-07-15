@@ -31,9 +31,11 @@
     # Linting and formatting
     nixfmt
     oxfmt
+    ruff
     shellcheck
 
     # LSP
+    basedpyright
     nixd
 
     # GUI applications from nixpkgs

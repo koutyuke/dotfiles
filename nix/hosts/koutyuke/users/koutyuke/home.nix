@@ -22,6 +22,7 @@
     [
       awscli2
       databricks-cli
+      google-cloud-sdk
       ssm-session-manager-plugin
     ]
     ++ (with pkgs.brewCasks; [
