@@ -1,4 +1,12 @@
-{ pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
+let
+  llmAgents = inputs.llm-agents.packages.${system};
+in
 {
   home.packages = [
     pkgs.brewCasks."jordanbaird-ice@beta"
@@ -41,7 +49,7 @@
     # GUI applications from nixpkgs
     vscode
   ])
-  ++ (with pkgs.llm-agents; [
+  ++ (with llmAgents; [
     codex
     claude-code
   ])

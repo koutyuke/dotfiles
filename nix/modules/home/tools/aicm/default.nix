@@ -1,5 +1,11 @@
-{ pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
 let
+  llmAgents = inputs.llm-agents.packages.${system};
   aicm = pkgs.writeShellApplication {
     name = "aicm";
     runtimeInputs = with pkgs; [
@@ -8,8 +14,8 @@ let
       gnugrep
       gnused
       jq
-      llm-agents.codex
-      llm-agents.claude-code
+      llmAgents.codex
+      llmAgents.claude-code
       ollama
     ];
     text = ''

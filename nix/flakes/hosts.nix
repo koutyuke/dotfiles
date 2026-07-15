@@ -10,7 +10,6 @@ in
         hostConfiguration = ../hosts/koutyuke/configuration.nix;
         overlays = [
           inputs.brew-nix.overlays.default
-          inputs.llm-agents.overlays.default
           (import ../overlays/brew-casks.nix)
           (import ../overlays/packages.nix)
         ];
@@ -20,7 +19,6 @@ in
         hostConfiguration = ../hosts/cybozu/configuration.nix;
         overlays = [
           inputs.brew-nix.overlays.default
-          inputs.llm-agents.overlays.default
           (import ../overlays/brew-casks.nix)
           (import ../overlays/packages.nix)
         ];
