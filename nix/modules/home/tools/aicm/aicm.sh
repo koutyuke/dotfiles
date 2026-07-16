@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DEFAULT_PROVIDER="codex"
-DEFAULT_CODEX_MODEL="gpt-5.4-mini"
+DEFAULT_CODEX_MODEL="gpt-5.6-luna"
 DEFAULT_CLAUDE_MODEL="haiku"
 DEFAULT_OLLAMA_MODEL="gemma4:e2b-it-qat"
 DEFAULT_CODEX_EFFORT="none"
