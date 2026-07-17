@@ -21,15 +21,9 @@
     project.personalDirectoryName = ".koutyuke";
   };
 
-  home.packages =
-    with pkgs;
-    [
-      bash
-    ]
-    ++ (with pkgs.brewCasks; [
-      intellij-idea
-      jetbrains-toolbox
-    ]);
+  home.packages = with pkgs; [
+    bash
+  ];
 
   programs = {
     git = {

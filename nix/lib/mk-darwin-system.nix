@@ -13,7 +13,6 @@ inputs.nix-darwin.lib.darwinSystem {
     hostConfiguration
     inputs.determinate.darwinModules.default
     inputs.home-manager.darwinModules.home-manager
-    inputs.brew-nix.darwinModules.default
     (
       { ... }:
       {

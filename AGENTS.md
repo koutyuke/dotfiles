@@ -3,8 +3,7 @@
 ## プロジェクト概要
 
 このリポジトリは `koutyuke` ホスト向けの宣言的な macOS dotfiles を管理しています。
-構成の中心は `nix-darwin`、`home-manager`、`flake-parts`、`brew-nix`、
-`treefmt-nix` です。
+構成の中心は `nix-darwin`、`home-manager`、`flake-parts`、`treefmt-nix` です。
 
 現在の flake target は次のとおりです。
 
@@ -23,7 +22,7 @@
 - `nix/modules/home/`: home-manager 用の共通 user module
 - `nix/hosts/koutyuke/`: host 固有の設定
 - `nix/hosts/koutyuke/users/kousuke/`: user 固有の設定
-- `nix/overlays/`: package と brew-cask の overlay
+- `nix/overlays/`: package overlay
 - `karabiner/`: user 設定にリンクされる Karabiner 設定
 - `docs/package-management.md`: package 配置ルールの詳細
 
@@ -42,11 +41,9 @@
 
 package の配置は `docs/package-management.md` に従ってください。
 
-- system integration が不要な GUI app は `pkgs.brewCasks` を優先する
-- `/Applications` への配置、URI scheme 登録、browser extension integration、
-  privileged helper、kernel または system extension、VPN client、custom tap
-  が必要な app、または brew-nix では clean に build できない app は
-  `homebrew.casks` を使う
+- Homebrew Cask で配布される GUI app は `homebrew.casks` を使う
+- GUI app の version は flake で固定せず、app 自身の自動更新または
+  `nix run .#update-gui` で更新する
 - Mac App Store 配布で、他の手段で扱えない app のみ `homebrew.masApps` を使う
 - CLI tool は nixpkgs に存在するならそれを使い、nixpkgs が適さない場合のみ
   Homebrew formula を使う

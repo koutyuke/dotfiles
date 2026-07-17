@@ -8,7 +8,6 @@ This repository manages system settings, CLI tools, GUI applications, shell conf
 - `nix-darwin`: macOS system configuration
 - `home-manager`: user environment and dotfile management
 - `flake-parts`: modular flake outputs
-- `brew-nix`: Homebrew Casks exposed as Nix packages
 - `treefmt-nix`: unified `nix fmt` configuration
 
 ## Current Layout
@@ -51,7 +50,6 @@ The current flake defines a single `koutyuke` host for `aarch64-darwin`.
     │       ├── packages.nix
     │       └── programs/
     └── overlays/
-        ├── brew-casks.nix
         └── packages.nix
 ```
 
@@ -76,7 +74,7 @@ Responsibilities are split as follows:
 - `nix/modules/home/`: shared user-level settings
 - `nix/hosts/koutyuke/`: host-specific settings
 - `nix/hosts/koutyuke/users/kousuke/`: user-specific settings
-- `nix/overlays/`: package overrides for `brew-nix` and custom packages
+- `nix/overlays/`: custom package overrides
 
 ## What This Repository Manages
 
@@ -102,7 +100,7 @@ Responsibilities are split as follows:
 - [`nix/flakes/hosts.nix`](./nix/flakes/hosts.nix)
   - defines `darwinConfigurations.koutyuke`
 - [`nix/lib/mk-darwin-system.nix`](./nix/lib/mk-darwin-system.nix)
-  - wires together `nix-darwin`, `home-manager`, and `brew-nix`
+  - constructs the `nix-darwin` system shared by each host
 - [`nix/modules/darwin/configuration.nix`](./nix/modules/darwin/configuration.nix)
   - shared macOS and Nix base settings
 - [`nix/modules/darwin/homebrew.nix`](./nix/modules/darwin/homebrew.nix)
@@ -184,7 +182,7 @@ The first positional argument overrides the target host (defaults to `koutyuke`)
 nix run .#update -- <host>
 ```
 
-Update GUI applications (`brew-api` input, Homebrew casks, Mac App Store apps) together with the system:
+Update GUI applications (Homebrew casks and Mac App Store apps) together with the system:
 
 ```bash
 nix run .#update-gui
@@ -206,7 +204,7 @@ For detailed package placement rules, see [`docs/package-management.md`](./docs/
 
 ## Notes
 
-- `brew-nix` is enabled, so GUI applications are split between `pkgs.brewCasks` and `homebrew.casks`
+- GUI applications distributed as Homebrew Casks are managed through `homebrew.casks`; their versions are intentionally not pinned by the flake
 - Homebrew itself is intentionally installed via the official installer instead of `nix-homebrew`. The `nix-darwin` `homebrew.*` options drive the `brew` binary that already exists on the system, and `brew update` / `brew upgrade --cask` work without the read-only-prefix constraints that `nix-homebrew` imposes
 - Karabiner config is not copied into the Nix store; the repository's `karabiner/` directory is symlinked instead
 - `system.configurationRevision` is populated from the flake `rev` or `dirtyRev`

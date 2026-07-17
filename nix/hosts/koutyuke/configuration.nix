@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../../modules/darwin
@@ -23,14 +23,6 @@
     localHostName = "koutyuke";
   };
 
-  environment.systemPackages = with pkgs.brewCasks; [
-    aldente
-    cleanmymac
-    istat-menus
-    microsoft-teams
-    pronotes
-  ];
-
   homebrew = {
     brews = [
       {
@@ -39,8 +31,16 @@
       }
     ];
     casks = [
+      "aldente"
       "aws-vpn-client"
+      "cleanmymac"
+      "coconutbattery"
+      "discord"
+      "istat-menus"
+      "microsoft-teams"
       "orbstack"
+      "pronotes"
+      "typora"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;

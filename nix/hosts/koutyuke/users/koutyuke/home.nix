@@ -17,19 +17,12 @@
     project.personalDirectoryName = ".koutyuke";
   };
 
-  home.packages =
-    with pkgs;
-    [
-      awscli2
-      databricks-cli
-      google-cloud-sdk
-      ssm-session-manager-plugin
-    ]
-    ++ (with pkgs.brewCasks; [
-      coconutbattery
-      discord
-      typora
-    ]);
+  home.packages = with pkgs; [
+    awscli2
+    databricks-cli
+    google-cloud-sdk
+    ssm-session-manager-plugin
+  ];
 
   programs = {
     git = {

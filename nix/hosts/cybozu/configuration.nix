@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../../modules/darwin
@@ -23,11 +23,6 @@
     localHostName = "cybozu-koutyuke";
   };
 
-  environment.systemPackages = with pkgs.brewCasks; [
-    stats
-    pronotes
-  ];
-
   homebrew = {
     brews = [
       {
@@ -37,6 +32,10 @@
     ];
     casks = [
       "docker-desktop"
+      "intellij-idea"
+      "jetbrains-toolbox"
+      "pronotes"
+      "stats"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;

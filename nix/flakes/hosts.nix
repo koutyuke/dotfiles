@@ -9,8 +9,6 @@ in
         system = "aarch64-darwin";
         hostConfiguration = ../hosts/koutyuke/configuration.nix;
         overlays = [
-          inputs.brew-nix.overlays.default
-          (import ../overlays/brew-casks.nix)
           (import ../overlays/packages.nix)
         ];
       };
@@ -18,8 +16,6 @@ in
         system = "aarch64-darwin";
         hostConfiguration = ../hosts/cybozu/configuration.nix;
         overlays = [
-          inputs.brew-nix.overlays.default
-          (import ../overlays/brew-casks.nix)
           (import ../overlays/packages.nix)
         ];
       };

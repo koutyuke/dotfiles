@@ -43,10 +43,6 @@ _: {
             sudo -v
 
             echo ""
-            echo "🔄 Updating brew-api input for brewCasks..."
-            nix flake update brew-api
-
-            echo ""
             echo "🍺 Updating Homebrew metadata..."
             brew update
 

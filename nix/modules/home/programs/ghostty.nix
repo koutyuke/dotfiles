@@ -75,8 +75,6 @@ let
   ghosttyAppSupportConfig = "${config.home.homeDirectory}/Library/Application Support/com.mitchellh.ghostty/config";
 in
 {
-  home.packages = lib.mkIf pkgs.stdenv.isDarwin [ pkgs.brewCasks.ghostty ];
-
   programs.ghostty = lib.mkIf (!pkgs.stdenv.isDarwin) {
     enable = true;
     enableZshIntegration = true;
