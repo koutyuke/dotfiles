@@ -16,7 +16,6 @@
       "canva"
       "chatgpt"
       "coteditor"
-      "cursor"
       "dbvisualizer"
       "devtoys"
       "figma"

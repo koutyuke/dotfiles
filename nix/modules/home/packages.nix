@@ -43,9 +43,6 @@ in
       # LSP
       basedpyright
       nixd
-
-      # GUI applications from nixpkgs
-      vscode
     ])
     ++ (with llmAgents; [
       codex

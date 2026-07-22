@@ -9,12 +9,6 @@ function dotfiles() {
   fi
 
   case "${1:-}" in
-    -c|--cursor)
-      cursor "$dotfiles_dir"
-      ;;
-    -v|--vscode)
-      code "$dotfiles_dir"
-      ;;
     -z|--zed)
       zed "$dotfiles_dir"
       ;;
@@ -22,8 +16,6 @@ function dotfiles() {
       echo "Usage: dotfiles [option]"
       echo ""
       echo "Options:"
-      echo "  -c, --cursor   Open in Cursor"
-      echo "  -v, --vscode   Open in VS Code"
       echo "  -z, --zed      Open in Zed"
       echo "  -h, --help     Show this help"
       echo "  (no option)    cd into dotfiles directory"

@@ -44,6 +44,7 @@
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
+      "Amphetamine" = 937984704;
       "Dropover" = 1355679052;
       "Goodnotes" = 1444383602;
       # "iMovie" = 408981434;
@@ -53,6 +54,7 @@
       # "Numbers" = 409203825;
       # "Pages" = 409201541;
       "Prime Video" = 545519333;
+      "RocketSim for Xcode Simulator" = 1504940162;
       "Xcode" = 497799835;
     };
   };
