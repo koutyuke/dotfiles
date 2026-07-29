@@ -1,0 +1,4 @@
+interface:
+  display_name: "良いドキュメントを書く"
+  short_description: "短く、誤解なく、行動につながる文書を作成・更新する"
+  default_prompt: "$write-effective-docs を使い、読者が短時間で正しく行動できる文書を作成・編集してください。"
