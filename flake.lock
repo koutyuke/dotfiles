@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785147662,
+        "narHash": "sha256-EsFpoWBgQ55s4EOpbDDkN5YmgSED2CDMm1Yl7cHtKcY=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "1843a76fa0c66b8886ac272925aca5ec27195950",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": [
@@ -384,6 +407,7 @@
     },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
