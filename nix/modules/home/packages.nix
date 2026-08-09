@@ -31,7 +31,6 @@ in
       postgresql
       ripgrep
       tree
-      uv
       watchman
       yq-go
 

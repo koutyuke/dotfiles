@@ -15,6 +15,7 @@
     ./mise.nix
     ./starship.nix
     ./tmux.nix
+    ./uv.nix
     ./zoxide.nix
   ];
 }
