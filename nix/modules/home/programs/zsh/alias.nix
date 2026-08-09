@@ -21,8 +21,10 @@
         nv = "nvim";
         dot = "dotfiles";
         cc = "claude";
+        ccs="claude --system-prompt='$(serena prompts print-cc-system-prompt-override'";
         cx = "codex";
         reload = "exec zsh -l";
+        hd = "herdr";
 
         # git
         g = "git";
