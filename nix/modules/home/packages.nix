@@ -19,7 +19,6 @@ in
       fd
       ffmpeg
       ghq
-      herdr
       httpie
       jnv
       jq
