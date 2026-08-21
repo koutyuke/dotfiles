@@ -72,6 +72,7 @@ Options:
   -c, --config       JSON config path
       --prompt       prompt text
       --prompt-file  prompt file path
+      --print-context print the default prompt context and exit
   -h, --help         show help
 EOF
 }
@@ -99,10 +100,6 @@ resolve_path() {
   esac
 }
 
-repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || die "not in a git repository"
-cd "$repo_root"
-
-config_file="$repo_root/.koutyuke/.aicm.json"
 cli_provider=""
 cli_model=""
 cli_effort=""
@@ -110,6 +107,7 @@ cli_output=""
 cli_config=""
 cli_prompt=""
 cli_prompt_file=""
+print_context=false
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
@@ -148,6 +146,10 @@ while [ "$#" -gt 0 ]; do
       cli_prompt_file="$2"
       shift 2
       ;;
+    --print-context)
+      print_context=true
+      shift
+      ;;
     -h | --help)
       usage
       exit 0
@@ -158,6 +160,15 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
+if [ "$print_context" = true ]; then
+  default_prompt_context
+  exit 0
+fi
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || die "not in a git repository"
+cd "$repo_root"
+
+config_file="$repo_root/.koutyuke/.aicm.json"
 [ -n "$cli_config" ] && config_file="$cli_config"
 
 provider="$DEFAULT_PROVIDER"
