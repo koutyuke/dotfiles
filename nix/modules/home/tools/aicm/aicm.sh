@@ -63,6 +63,7 @@ die_with_log() {
 usage() {
   cat <<'EOF'
 Usage: aicm [-p provider] [-m model] [-e effort] [-o output] [-c config]
+       aicm --init [--force] [-c config]
 
 Options:
   -p, --provider     codex | claude | ollama
@@ -73,6 +74,8 @@ Options:
       --prompt       prompt text
       --prompt-file  prompt file path
       --print-context print the default prompt context and exit
+      --init         create a config file with default settings and exit
+      --force        overwrite an existing config file (requires --init)
   -h, --help         show help
 EOF
 }
@@ -100,6 +103,40 @@ resolve_path() {
   esac
 }
 
+init_config() {
+  local target="$1"
+  local dir tmp_file
+  dir="$(dirname "$target")"
+
+  if [ -e "$target" ] && [ "$force_init" != true ]; then
+    die "config already exists: $target (use --force to overwrite)"
+  fi
+
+  mkdir -p "$dir" || die "failed to create directory: $dir"
+
+  tmp_file="$(mktemp "$dir/.aicm.json.XXXXXX")" || die "failed to create a temporary file in: $dir"
+
+  # model と effort は provider ごとの既定値に委ねるため書き出さない。
+  # 明示すると provider だけ変更したときに model が食い違う。
+  if ! jq -n \
+    --arg schema "${AICM_SCHEMA_PATH:-}" \
+    --arg provider "$DEFAULT_PROVIDER" \
+    --arg output "$DEFAULT_OUTPUT" \
+    '({} | if $schema == "" then . else ."$schema" = $schema end)
+      + { provider: $provider, output: $output }' >"$tmp_file"; then
+    rm -f "$tmp_file"
+    die "failed to generate config: $target"
+  fi
+
+  chmod 644 "$tmp_file"
+  mv "$tmp_file" "$target" || {
+    rm -f "$tmp_file"
+    die "failed to write config: $target"
+  }
+
+  printf '✅ created %s\n' "$target"
+}
+
 cli_provider=""
 cli_model=""
 cli_effort=""
@@ -108,6 +145,8 @@ cli_config=""
 cli_prompt=""
 cli_prompt_file=""
 print_context=false
+do_init=false
+force_init=false
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
@@ -150,6 +189,14 @@ while [ "$#" -gt 0 ]; do
       print_context=true
       shift
       ;;
+    --init)
+      do_init=true
+      shift
+      ;;
+    --force)
+      force_init=true
+      shift
+      ;;
     -h | --help)
       usage
       exit 0
@@ -165,11 +212,20 @@ if [ "$print_context" = true ]; then
   exit 0
 fi
 
+if [ "$force_init" = true ] && [ "$do_init" != true ]; then
+  die "--force requires --init"
+fi
+
 repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || die "not in a git repository"
 cd "$repo_root"
 
 config_file="$repo_root/.koutyuke/.aicm.json"
 [ -n "$cli_config" ] && config_file="$cli_config"
+
+if [ "$do_init" = true ]; then
+  init_config "$(resolve_path "$config_file")"
+  exit 0
+fi
 
 provider="$DEFAULT_PROVIDER"
 model=""
