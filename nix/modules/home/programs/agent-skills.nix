@@ -1,13 +1,4 @@
 { inputs, ... }:
-let
-  skillsRoot = ../../../../agents/skills;
-  excludedSkills = [
-    "en-to-ja-paper-translator"
-  ];
-  enabledSkills = builtins.filter (
-    name: !builtins.elem name excludedSkills && builtins.pathExists (skillsRoot + "/${name}/SKILL.md")
-  ) (builtins.attrNames (builtins.readDir skillsRoot));
-in
 {
   imports = [
     inputs.agent-skills.homeManagerModules.default
@@ -16,8 +7,11 @@ in
   programs.agent-skills = {
     enable = true;
 
-    sources.dotfiles.path = skillsRoot;
-    skills.enable = enabledSkills;
+    sources.dotfiles.path = ../../../../agents/skills;
+    skills.enable = [
+      "compare-options"
+      "docs-that-work"
+    ];
 
     targets = {
       agents.enable = true;
