@@ -23,6 +23,22 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    koutyuke-skills = {
+      url = "github:koutyuke/skills";
+      flake = false;
+    };
+    herdr-skills = {
+      url = "github:herdrdev/herdr";
+      flake = false;
+    };
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
+    mizchi-skills = {
+      url = "github:mizchi/skills";
+      flake = false;
+    };
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 

@@ -106,7 +106,7 @@ flake.nix
 - Neovim の activation は、既存の `~/.config/nvim` が実ディレクトリの場合に削除してからリンクする。反映前に必要な設定をリポジトリへ移すか、明示的に退避する。
 - Karabiner の変更は `karabiner/karabiner.json` に置く。Home Manager の activation が `~/.config/karabiner` 全体をリポジトリへリンクする。
 - Karabiner の activation は既存の実ディレクトリを削除せずエラーにする。手動で退避してから再実行する。
-- `agents/skills/` の Skill は `nix/modules/home/programs/agent-skills.nix` から宣言的に配布される。Skill の追加・削除時は対象ディレクトリの `SKILL.md` と有効化条件を確認する。
+- 個人 Skill と外部 Skill は、`flake.nix` の入力を `nix/modules/home/programs/agent-skills.nix` で宣言的に配布する。Skill の追加・削除時は対象ソースの `SKILL.md` と `enableAll`/`enable` の有効化条件を確認する。
 
 ## 変更と検証の手順
 
