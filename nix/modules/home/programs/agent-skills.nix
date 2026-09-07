@@ -27,15 +27,33 @@
 
     skills = {
       enableAll = [ "koutyuke" ];
-      enable = [
-        "herdr"
-        "productivity/grill-me"
-        "productivity/grilling"
-        "engineering/grill-with-docs"
-        "meta/empirical-prompt-tuning"
-        "meta/tech-article-reproducibility"
-        "tooling/nix-setup"
-      ];
+      enable = [ "herdr" ];
+      explicit = {
+        grill-me = {
+          from = "mattpocock";
+          path = "productivity/grill-me";
+        };
+        grilling = {
+          from = "mattpocock";
+          path = "productivity/grilling";
+        };
+        grill-with-docs = {
+          from = "mattpocock";
+          path = "engineering/grill-with-docs";
+        };
+        empirical-prompt-tuning = {
+          from = "mizchi";
+          path = "meta/empirical-prompt-tuning";
+        };
+        tech-article-reproducibility = {
+          from = "mizchi";
+          path = "meta/tech-article-reproducibility";
+        };
+        nix-setup = {
+          from = "mizchi";
+          path = "tooling/nix-setup";
+        };
+      };
     };
 
     targets = {
