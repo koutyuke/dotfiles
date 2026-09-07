@@ -26,8 +26,11 @@
     };
 
     skills = {
-      enableAll = [ "koutyuke" ];
-      enable = [ "herdr" ];
+      enable = [
+        "compare-options"
+        "docs-that-work"
+        "herdr"
+      ];
       explicit = {
         grill-me = {
           from = "mattpocock";
