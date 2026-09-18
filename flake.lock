@@ -255,11 +255,11 @@
     "koutyuke-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1788738926,
-        "narHash": "sha256-a7udehyVbauTm0zFNGyve+NVqvapQkYwHD9sCJwRiIg=",
+        "lastModified": 1789706602,
+        "narHash": "sha256-4TrLo7Wj49KbDw5xzZpmubhZjDb1Xj1/SAe1U49E3+k=",
         "owner": "koutyuke",
         "repo": "skills",
-        "rev": "60d9539e2fce84d322617328f4d903d49a7e10cd",
+        "rev": "24897dd1fce087418799a9c64668cbf61c4171e6",
         "type": "github"
       },
       "original": {

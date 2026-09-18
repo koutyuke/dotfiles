@@ -27,7 +27,7 @@
 
     skills = {
       enable = [
-        "compare-options"
+        "weigh-in"
         "docs-that-work"
         "herdr"
       ];
