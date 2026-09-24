@@ -4,6 +4,8 @@
     inputs.agent-skills.homeManagerModules.default
   ];
 
+  # 業務環境では個人 Skill 以外を入れられないため、共通には koutyuke-skills だけを置く。
+  # 外部 Skill はホストごとの home.nix で追加する。
   programs.agent-skills = {
     enable = true;
 
@@ -12,52 +14,14 @@
         input = "koutyuke-skills";
         subdir = "skills";
       };
-      herdr = {
-        input = "herdr-skills";
-        subdir = "skills";
-      };
-      mattpocock = {
-        input = "mattpocock-skills";
-        subdir = "skills";
-      };
-      mizchi = {
-        input = "mizchi-skills";
-      };
     };
 
-    skills = {
-      enable = [
-        "weigh-in"
-        "docs-that-work"
-        "herdr"
-      ];
-      explicit = {
-        grill-me = {
-          from = "mattpocock";
-          path = "productivity/grill-me";
-        };
-        grilling = {
-          from = "mattpocock";
-          path = "productivity/grilling";
-        };
-        grill-with-docs = {
-          from = "mattpocock";
-          path = "engineering/grill-with-docs";
-        };
-        empirical-prompt-tuning = {
-          from = "mizchi";
-          path = "meta/empirical-prompt-tuning";
-        };
-        tech-article-reproducibility = {
-          from = "mizchi";
-          path = "meta/tech-article-reproducibility";
-        };
-        nix-setup = {
-          from = "mizchi";
-          path = "tooling/nix-setup";
-        };
-      };
-    };
+    skills.enable = [
+      "weigh-in"
+      "docs-that-work"
+      "drill-me"
+      "twintail"
+    ];
 
     targets = {
       agents.enable = true;
