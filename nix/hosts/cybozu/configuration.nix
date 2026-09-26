@@ -34,6 +34,7 @@
       "docker-desktop"
       "intellij-idea"
       "jetbrains-toolbox"
+      "orbstack"
       "pronotes"
       "stats"
     ];
