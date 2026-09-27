@@ -23,6 +23,9 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
+    # skills
     koutyuke-skills = {
       url = "github:koutyuke/skills";
       flake = false;
@@ -39,15 +42,15 @@
       url = "github:mizchi/skills";
       flake = false;
     };
-    llm-agents.url = "github:numtide/llm-agents.nix";
+    orca-skills = {
+      url = "github:stablyai/orca";
+      flake = false;
+    };
   };
 
   outputs =
     inputs@{
-      self,
       flake-parts,
-      nix-darwin,
-      home-manager,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {

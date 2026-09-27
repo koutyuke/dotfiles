@@ -12,11 +12,17 @@
       mizchi = {
         input = "mizchi-skills";
       };
+      orca = {
+        input = "orca-skills";
+        subdir = "skills";
+      };
     };
 
     skills = {
       enable = [
         "herdr"
+        "orca-cli"
+        "orchestration"
       ];
       explicit = {
         grill-me = {
