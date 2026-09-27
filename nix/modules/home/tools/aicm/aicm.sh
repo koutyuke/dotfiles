@@ -2,11 +2,12 @@
 set -euo pipefail
 
 DEFAULT_PROVIDER="codex"
-DEFAULT_CODEX_MODEL="gpt-5.6-luna"
+
+DEFAULT_CODEX_MODEL="gpt-6-luna"
+DEFAULT_CODEX_EFFORT="low"
 DEFAULT_CLAUDE_MODEL="haiku"
-DEFAULT_OLLAMA_MODEL="gemma4:e2b-it-qat"
-DEFAULT_CODEX_EFFORT="none"
 DEFAULT_CLAUDE_EFFORT="low"
+DEFAULT_OLLAMA_MODEL="gemma4:e2b-it-qat"
 DEFAULT_OUTPUT="print"
 DEFAULT_OLLAMA_HOST="http://127.0.0.1:11434"
 
@@ -93,7 +94,7 @@ clean_message() {
 }
 
 double_quote() {
-  printf "%s" "$1" | sed 's/\\/\\\\/g; s/"/\\"/g; s/^/"/; s/$/"/'
+  printf "%s" "$1" | sed 's/\\/\\\\/g; s/["$`]/\\&/g; s/^/"/; s/$/"/'
 }
 
 resolve_path() {
@@ -344,7 +345,11 @@ case "$provider" in
       - <"$prompt_file" >"$log_file" 2>&1 || die_with_log "codex failed" "$log_file"
     ;;
   claude)
-    claude -p \
+    claude_env=()
+    if [ "$effort" = low ]; then
+      claude_env+=(MAX_THINKING_TOKENS=0)
+    fi
+    env "${claude_env[@]}" claude -p \
       --safe-mode \
       --no-session-persistence \
       --disable-slash-commands \

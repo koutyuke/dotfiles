@@ -22,12 +22,12 @@
     },
     "model": {
       "type": "string",
-      "description": "Model name passed to the selected provider. If omitted, a provider-specific default is used.",
+      "description": "Model name passed to the selected provider. Defaults: codex uses gpt-6-luna and claude uses haiku; ollama uses gemma4:e2b-it-qat.",
       "minLength": 1
     },
     "effort": {
       "type": "string",
-      "description": "Reasoning effort passed to the selected provider. If omitted, provider-specific defaults are used: codex uses none, claude uses low, and ollama ignores effort.",
+      "description": "Reasoning effort passed to the selected provider. Defaults: codex uses low, claude uses low with extended thinking disabled, and ollama ignores effort. Codex supports none/low/medium/high/xhigh; Claude supports low/medium/high/xhigh/max.",
       "enum": [
         "none",
         "low",
