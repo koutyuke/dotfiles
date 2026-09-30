@@ -5,7 +5,6 @@
       cd = "z";
       ls = "eza --icons=auto --group-directories-first";
       grep = "rg";
-      opencode = "opencode2";
     };
 
     zsh-abbr = {
@@ -23,7 +22,7 @@
         dot = "dotfiles";
         cc = "claude";
         cx = "codex";
-        oc = "opencode";
+        oc = "opencode2";
         hd = "herdr";
 
         # git
