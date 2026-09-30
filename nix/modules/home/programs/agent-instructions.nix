@@ -24,15 +24,16 @@ in
 
   programs.agent-instructions = {
     enable = true;
-    fragments = [
+    sources = [
       COMMON
       CONTEXT7
     ];
     targets = {
+      antigravity.enable = true;
       claude.enable = true;
       codex = {
         enable = true;
-        fragments = [
+        sources = [
           CODEX
         ];
       };

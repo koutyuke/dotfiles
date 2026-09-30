@@ -7,20 +7,22 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-hMYnJkhONHVMTIUrgsb75XR6cB2PMBtYZJjzFBr3iNc=",
-        "path": "/Users/koutyuke/Developer/github.com/koutyuke/agent-instructions-nix",
-        "type": "path"
+        "lastModified": 1790792755,
+        "narHash": "sha256-P+rjszqDE8EjSaDdMhmZK4oI7u6hin/Mdwmdo70Lnug=",
+        "owner": "koutyuke",
+        "repo": "agent-instructions-nix",
+        "rev": "4f239b8a913fbdb7bb6c3f93943650edaa0b1b52",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/koutyuke/Developer/github.com/koutyuke/agent-instructions-nix",
-        "type": "path"
+        "owner": "koutyuke",
+        "repo": "agent-instructions-nix",
+        "type": "github"
       }
     },
     "agent-skills": {
       "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
+        "home-manager": "home-manager",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -249,6 +251,27 @@
       }
     },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "agent-skills",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790792194,
+        "narHash": "sha256-404+/PoCo34O0iruXzN2nY3sh2ZP7dxmdQ+duis2arI=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "fab715cc65199017cc4d86312eb07c01230b01a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -509,7 +532,7 @@
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",
         "herdr-skills": "herdr-skills",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "koutyuke-skills": "koutyuke-skills",
         "llm-agents": "llm-agents",
         "mattpocock-skills": "mattpocock-skills",
