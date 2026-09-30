@@ -23,6 +23,11 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO: GitHub へ公開後に github:koutyuke/agent-instructions-nix へ切り替える
+    agent-instructions = {
+      url = "path:/Users/koutyuke/Developer/github.com/koutyuke/agent-instructions-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     llm-agents.url = "github:numtide/llm-agents.nix";
 
     # skills

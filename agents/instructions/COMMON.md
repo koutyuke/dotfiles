@@ -1,4 +1,4 @@
-# AGENTS.md
+# COMMON.md
 
 ## 適用範囲
 

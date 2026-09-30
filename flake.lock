@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "agent-instructions": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "narHash": "sha256-hMYnJkhONHVMTIUrgsb75XR6cB2PMBtYZJjzFBr3iNc=",
+        "path": "/Users/koutyuke/Developer/github.com/koutyuke/agent-instructions-nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/koutyuke/Developer/github.com/koutyuke/agent-instructions-nix",
+        "type": "path"
+      }
+    },
     "agent-skills": {
       "inputs": {
         "home-manager": [
@@ -488,6 +504,7 @@
     },
     "root": {
       "inputs": {
+        "agent-instructions": "agent-instructions",
         "agent-skills": "agent-skills",
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",

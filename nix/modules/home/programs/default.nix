@@ -3,6 +3,7 @@
     ./neovim
     ./zsh
 
+    ./agent-instructions.nix
     ./agent-skills.nix
     ./bat.nix
     ./direnv.nix
