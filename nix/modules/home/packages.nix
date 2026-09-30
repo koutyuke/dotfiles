@@ -46,5 +46,6 @@ in
     ++ (with llmAgents; [
       codex
       claude-code
+      antigravity-cli
     ]);
 }
