@@ -17,10 +17,11 @@
     };
 
     skills.enable = [
-      "weigh-in"
       "docs-that-work"
       "drill-me"
+      "teacher-prompt"
       "twintail"
+      "weigh-in"
     ];
 
     targets = {
