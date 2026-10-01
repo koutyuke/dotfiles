@@ -12,6 +12,10 @@
       mizchi = {
         input = "mizchi-skills";
       };
+      yomiyasu = {
+        input = "yomiyasu-skills";
+        subdir = "skills";
+      };
       orca = {
         input = "orca-skills";
         subdir = "skills";
@@ -20,6 +24,7 @@
 
     skills = {
       enable = [
+        "yomiyasu"
         "herdr"
         "orca-cli"
         "orchestration"
@@ -39,15 +44,15 @@
         };
         empirical-prompt-tuning = {
           from = "mizchi";
-          path = "meta/empirical-prompt-tuning";
+          path = "empirical-prompt-tuning";
         };
         tech-article-reproducibility = {
           from = "mizchi";
-          path = "meta/tech-article-reproducibility";
+          path = "tech-article-reproducibility";
         };
         nix-setup = {
           from = "mizchi";
-          path = "tooling/nix-setup";
+          path = "nix-setup";
         };
       };
     };

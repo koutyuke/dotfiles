@@ -237,11 +237,11 @@
     "herdr-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1788737224,
-        "narHash": "sha256-L54SVSXGCsQzuP/typ6cQt96l0QDUWV2qTP7APl+bsQ=",
+        "lastModified": 1790817238,
+        "narHash": "sha256-AiruvCcV2wdbAU06TldsWj3i7LmKvH9NuTnlCY90ik0=",
         "owner": "herdrdev",
         "repo": "herdr",
-        "rev": "4b5e9bda239a0b6903889062d756424578e94691",
+        "rev": "d6b40d4edd550ccea081f089605a64314f8c8b27",
         "type": "github"
       },
       "original": {
@@ -332,11 +332,11 @@
     "mattpocock-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1788511407,
-        "narHash": "sha256-dF5i37jHnqfcXD1IRSVzSSm/pfCYSUmOsEhhs5Zx340=",
+        "lastModified": 1790685460,
+        "narHash": "sha256-zQ/wVrcHjIC+UjP4nDw3HARMqZd6LIDFmHKlp8AADYI=",
         "owner": "mattpocock",
         "repo": "skills",
-        "rev": "3cca18b368ae95cdbdebbff572ccafa662551015",
+        "rev": "d81f3a183412e71a5b1e84ca21bc1a35eea03a60",
         "type": "github"
       },
       "original": {
@@ -348,11 +348,11 @@
     "mizchi-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1784050221,
-        "narHash": "sha256-ayMrZJ+3OD+f4azULSfgFh84UIQSoi+fhSOYvwWq45A=",
+        "lastModified": 1790759654,
+        "narHash": "sha256-Emdm83jQWVfrFdZOmCmeWM1pA7WmSdLjoL3cp2NWfQI=",
         "owner": "mizchi",
         "repo": "skills",
-        "rev": "7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4",
+        "rev": "f1dfda26e4a86c75037497f5922cae42b86aa83c",
         "type": "github"
       },
       "original": {
@@ -512,11 +512,11 @@
     "orca-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1790499749,
-        "narHash": "sha256-SwXdyzNIxnXDTwiOsRMKZcLSbU2VtbSta/5YFQGx50U=",
+        "lastModified": 1790842257,
+        "narHash": "sha256-RXtvOvR5AvkwLMUU+on2K8CzumItzpa09EvrHUom/V0=",
         "owner": "stablyai",
         "repo": "orca",
-        "rev": "27b823f934f739bc85914dd717b776835f60bcf7",
+        "rev": "ddd4927a0b139af72aaf3526411facaa9b871d4b",
         "type": "github"
       },
       "original": {
@@ -541,7 +541,8 @@
         "nixpkgs": "nixpkgs_4",
         "orca-skills": "orca-skills",
         "systems": "systems_2",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_2",
+        "yomiyasu-skills": "yomiyasu-skills"
       }
     },
     "systems": {
@@ -612,6 +613,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "yomiyasu-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790842909,
+        "narHash": "sha256-5PqZpMj5NLa1tQDSvKrHlL7Pt2gXXMOQtdysqhni8Wk=",
+        "owner": "nanaism",
+        "repo": "yomiyasu",
+        "rev": "7b61b2f0283265ce1986d76c67929622a775844d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nanaism",
+        "repo": "yomiyasu",
         "type": "github"
       }
     }
