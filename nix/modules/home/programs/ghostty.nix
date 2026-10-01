@@ -75,17 +75,17 @@ let
   ghosttyAppSupportConfig = "${config.home.homeDirectory}/Library/Application Support/com.mitchellh.ghostty/config";
 in
 {
-  programs.ghostty = lib.mkIf (!pkgs.stdenv.isDarwin) {
+  programs.ghostty = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) {
     enable = true;
     enableZshIntegration = true;
     settings = ghosttySettings;
   };
 
-  xdg.configFile."ghostty/config" = lib.mkIf pkgs.stdenv.isDarwin {
+  xdg.configFile."ghostty/config" = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     text = ghosttyConfigText;
   };
 
-  home.activation.linkGhosttyConfig = lib.mkIf pkgs.stdenv.isDarwin (
+  home.activation.linkGhosttyConfig = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (
     lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       mkdir -p "$(dirname "${ghosttyAppSupportConfig}")"
       ln -sfn "${config.xdg.configHome}/ghostty/config" "${ghosttyAppSupportConfig}"
