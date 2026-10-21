@@ -317,6 +317,7 @@
                         "product_id": 591,
                         "vendor_id": 1452
                     },
+                    "ignore": false,
                     "simple_modifications": [
                         {
                             "from": { "key_code": "delete_forward" },
@@ -347,6 +348,15 @@
                             "to": [{ "key_code": "right_command" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 591,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true
                 }
             ],
             "name": "Default profile",
