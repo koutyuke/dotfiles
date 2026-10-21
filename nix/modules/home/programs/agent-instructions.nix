@@ -4,8 +4,8 @@
   ...
 }:
 let
-  COMMON = {
-    path = ../../../../agents/instructions/COMMON.md;
+  BASE = {
+    path = ../../../../agents/instructions/BASE.md;
     headingStrategy = "drop";
   };
   CONTEXT7 = {
@@ -14,6 +14,14 @@ let
   };
   CODEX = {
     path = ../../../../agents/instructions/CODEX.md;
+    headingStrategy = "drop";
+  };
+  # ORCA = {
+  #   path = ../../../../agents/instructions/ORCA.md;
+  #   headingStrategy = "drop";
+  # };
+  YOUR_CODE_IS_SO_FAT = {
+    path = ../../../../agents/instructions/YOUR_CODE_IS_SO_FAT.md;
     headingStrategy = "drop";
   };
 in
@@ -25,7 +33,8 @@ in
   programs.agent-instructions = {
     enable = true;
     sources = [
-      COMMON
+      BASE
+      YOUR_CODE_IS_SO_FAT
       CONTEXT7
     ];
     targets = {
