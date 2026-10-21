@@ -56,5 +56,11 @@
         };
       };
     };
+    targets = {
+      antigravity = {
+        enable = true;
+        dest = "$HOME/.gemini/config/skills";
+      };
+    };
   };
 }
