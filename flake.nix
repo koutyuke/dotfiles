@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # TODO: nixpkgs-unstable の uv が 0.13.5 以上になったら削除する。
+    nixpkgs-uv.url = "github:NixOS/nixpkgs/9e2dbb1324c1e36ac8f19bcfd6774edf68fb356f";
     systems.url = "github:nix-systems/default";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     flake-parts.url = "github:hercules-ci/flake-parts";

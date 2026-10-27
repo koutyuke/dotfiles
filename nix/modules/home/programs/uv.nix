@@ -1,14 +1,16 @@
 {
   config,
-  pkgs,
+  inputs,
+  system,
   ...
 }:
 let
   home = config.home.homeDirectory;
 in
 {
-  home.packages = with pkgs; [
-    uv
+  # eMudhra 中間証明書を拒否する 0.13.5 が nixpkgs-unstable に届くまで、固定したコミットから取る。
+  home.packages = [
+    inputs.nixpkgs-uv.legacyPackages.${system}.uv
   ];
 
   # uv tool の実行ファイル配置先を明示し、下の sessionPath と一致させる。
