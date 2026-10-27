@@ -16,12 +16,12 @@ let
     path = ../../../../agents/instructions/CODEX.md;
     headingStrategy = "drop";
   };
-  # ORCA = {
-  #   path = ../../../../agents/instructions/ORCA.md;
-  #   headingStrategy = "drop";
-  # };
   YOUR_CODE_IS_SO_FAT = {
     path = ../../../../agents/instructions/YOUR_CODE_IS_SO_FAT.md;
+    headingStrategy = "demote";
+  };
+  ORCA = {
+    path = ../../../../agents/instructions/ORCA.md;
     headingStrategy = "drop";
   };
 in
@@ -39,7 +39,12 @@ in
     ];
     targets = {
       antigravity.enable = true;
-      claude.enable = true;
+      claude = {
+        enable = true;
+        sources = [
+          ORCA
+        ];
+      };
       codex = {
         enable = true;
         sources = [
