@@ -50,6 +50,9 @@
     session = {
       thinking = "hide";
     };
+    mini = {
+      thinking = "hide";
+    };
     diffs = {
       wrap = "word";
     };
