@@ -16,18 +16,12 @@
         input = "yomiyasu-skills";
         subdir = "skills";
       };
-      orca = {
-        input = "orca-skills";
-        subdir = "skills";
-      };
     };
 
     skills = {
       enable = [
         "yomiyasu"
         "herdr"
-        "orca-cli"
-        "orchestration"
       ];
       explicit = {
         grill-me = {
@@ -37,10 +31,6 @@
         grilling = {
           from = "mattpocock";
           path = "productivity/grilling";
-        };
-        grill-with-docs = {
-          from = "mattpocock";
-          path = "engineering/grill-with-docs";
         };
         empirical-prompt-tuning = {
           from = "mizchi";

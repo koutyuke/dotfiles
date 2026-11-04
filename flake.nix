@@ -51,10 +51,6 @@
       url = "github:nanaism/yomiyasu";
       flake = false;
     };
-    orca-skills = {
-      url = "github:stablyai/orca";
-      flake = false;
-    };
   };
 
   outputs =

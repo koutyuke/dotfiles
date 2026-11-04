@@ -20,8 +20,8 @@
       "docs-that-work"
       "drill-me"
       "teacher-prompt"
-      "twintail"
-      "weigh-in"
+      "your-code-is-so-fat"
+      "i-cant-decide"
     ];
 
     targets = {

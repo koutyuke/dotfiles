@@ -294,11 +294,11 @@
     "koutyuke-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1791082622,
-        "narHash": "sha256-jGAwvBoilepoDYzPFk7opgYBPjEiRwcR7Ia6rfQy/bU=",
+        "lastModified": 1793419118,
+        "narHash": "sha256-bv9GNMCW8BADv8CXBhCCfV3BWkjkRBaYZvpIiLdIU84=",
         "owner": "koutyuke",
         "repo": "skills",
-        "rev": "fef58426a1d1a062bcfcde52bf926a4b1e876198",
+        "rev": "7c64a95726facd13265828a63699879eb1f4261f",
         "type": "github"
       },
       "original": {
@@ -525,22 +525,6 @@
         "type": "github"
       }
     },
-    "orca-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1790842257,
-        "narHash": "sha256-RXtvOvR5AvkwLMUU+on2K8CzumItzpa09EvrHUom/V0=",
-        "owner": "stablyai",
-        "repo": "orca",
-        "rev": "ddd4927a0b139af72aaf3526411facaa9b871d4b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stablyai",
-        "repo": "orca",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agent-instructions": "agent-instructions",
@@ -556,7 +540,6 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-uv": "nixpkgs-uv",
-        "orca-skills": "orca-skills",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix_2",
         "yomiyasu-skills": "yomiyasu-skills"
