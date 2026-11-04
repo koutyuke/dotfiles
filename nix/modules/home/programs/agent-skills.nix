@@ -19,8 +19,6 @@
     skills.enable = [
       "docs-that-work"
       "drill-me"
-      "teacher-prompt"
-      "your-code-is-so-fat"
       "i-cant-decide"
     ];
 
