@@ -8,21 +8,13 @@ let
     path = ../../../../agents/instructions/BASE.md;
     headingStrategy = "drop";
   };
-  CONTEXT7 = {
-    path = ../../../../agents/instructions/CONTEXT7.md;
-    headingStrategy = "demote";
-  };
-  CODEX = {
-    path = ../../../../agents/instructions/CODEX.md;
+  TOOLS = {
+    path = ../../../../agents/instructions/TOOLS.md;
     headingStrategy = "drop";
   };
   YOUR_CODE_IS_SO_FAT = {
     path = ../../../../agents/instructions/YOUR_CODE_IS_SO_FAT.md;
     headingStrategy = "demote";
-  };
-  ORCA = {
-    path = ../../../../agents/instructions/ORCA.md;
-    headingStrategy = "drop";
   };
 in
 {
@@ -35,22 +27,13 @@ in
     sources = [
       BASE
       YOUR_CODE_IS_SO_FAT
-      CONTEXT7
+      TOOLS
     ];
     targets = {
       antigravity.enable = true;
-      claude = {
-        enable = true;
-        sources = [
-          ORCA
-        ];
-      };
-      codex = {
-        enable = true;
-        sources = [
-          CODEX
-        ];
-      };
+      claude.enable = true;
+      codex.enable = true;
+
       # opencode はホストごとに有効化する。
       opencode.enable = config.programs.opencode.enable;
     };
