@@ -35,10 +35,6 @@
       url = "github:koutyuke/skills";
       flake = false;
     };
-    herdr-skills = {
-      url = "github:herdrdev/herdr";
-      flake = false;
-    };
     mattpocock-skills = {
       url = "github:mattpocock/skills";
       flake = false;

@@ -234,22 +234,6 @@
         "url": "https://flakehub.com/f/cachix/git-hooks.nix/0.1.941"
       }
     },
-    "herdr-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1790817238,
-        "narHash": "sha256-AiruvCcV2wdbAU06TldsWj3i7LmKvH9NuTnlCY90ik0=",
-        "owner": "herdrdev",
-        "repo": "herdr",
-        "rev": "d6b40d4edd550ccea081f089605a64314f8c8b27",
-        "type": "github"
-      },
-      "original": {
-        "owner": "herdrdev",
-        "repo": "herdr",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -531,7 +515,6 @@
         "agent-skills": "agent-skills",
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",
-        "herdr-skills": "herdr-skills",
         "home-manager": "home-manager_2",
         "koutyuke-skills": "koutyuke-skills",
         "llm-agents": "llm-agents",

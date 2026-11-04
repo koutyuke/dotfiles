@@ -1,10 +1,6 @@
 {
   programs.agent-skills = {
     sources = {
-      herdr = {
-        input = "herdr-skills";
-        subdir = "skills";
-      };
       mattpocock = {
         input = "mattpocock-skills";
         subdir = "skills";
@@ -21,7 +17,6 @@
     skills = {
       enable = [
         "yomiyasu"
-        "herdr"
       ];
       explicit = {
         grill-me = {

@@ -97,9 +97,9 @@ flake.nix
 ### リポジトリ内の設定ファイル
 
 - 設定の配置は、拡張子や「シンボリックリンクを使うか」ではなく、アプリが実行時に正本を書き換えるか、Nix store 経由で配布できるかで決める。Home Manager や nix-darwin に `programs.<tool>` モジュールがある場合は、まずそのオプションで生成する。
-- アプリから書き換えられない宣言的な設定は、単一ファイルかディレクトリかにかかわらず、対応する `nix/modules/<scope>/programs/<tool>/` 配下に置く。`xdg.configFile` や `home.file` の `.text`、`.source` を使って Home Manager から配布する。この方式のリンク先が Nix store になることは問題ない。例: `nix/modules/home/programs/herdr/config.toml`。
+- アプリから書き換えられない宣言的な設定は、単一ファイルかディレクトリかにかかわらず、対応する `nix/modules/<scope>/programs/<tool>/` 配下に置く。`xdg.configFile` や `home.file` の `.text`、`.source` を使って Home Manager から配布する。この方式のリンク先が Nix store になることは問題ない。例: `nix/modules/home/programs/ghostty.nix`。
 - アプリが設定や補助ファイルを実行時に書き換える、またはリポジトリのディレクトリ自体をアプリの作業領域として直接リンクする必要がある場合は、リポジトリ直下のアプリ名ディレクトリ（例: `nvim/`、`karabiner/`）を正本にする。`nix/modules/<scope>/dotfiles/` または `nix/modules/<scope>/programs/<tool>/` の担当モジュールに activation を置き、ホームへリポジトリを直接リンクする。
-- 「変更頻度が高い」「Home Manager に専用モジュールがない」という理由だけでは、ルート直下へ移さない。アプリが書き換えない静的な設定なら、ツールのパッケージやモジュールに近い `nix/modules/<scope>/programs/<tool>/` に置く。`herdr` はこのケースに該当する。
+- 「変更頻度が高い」「Home Manager に専用モジュールがない」という理由だけでは、ルート直下へ移さない。アプリが書き換えない静的な設定なら、ツールのパッケージやモジュールに近い `nix/modules/<scope>/programs/<tool>/` に置く。
 - ルート直下に置く場合も、用途が曖昧な共通 `dotfiles/` ディレクトリには集約せず、アプリ名のディレクトリを作る。`nix/modules/**/programs/<tool>/` とルート直下のアプリ名ディレクトリに同じ正本を複製しない。
 - ルート直下の設定を直接リンクする場合、アプリからの変更もリポジトリの正本に対する変更になる。activation はリンク先と配置先を明示し、既存の実ディレクトリや未管理ファイルを意図せず削除・上書きしない。秘密情報や認証情報は正本へ追加せず、個人用の無視対象ファイルは `.koutyuke/` を使う。
 - Neovim の設定は `nvim/` に置き、`nix/modules/home/programs/neovim/default.nix` が `~/.config/nvim` へリンクする。
