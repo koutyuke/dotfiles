@@ -11,6 +11,7 @@
     ./gh.nix
     ./ghostty.nix
     ./git.nix
+    ./herdr
     ./javascript.nix
     ./lazygit.nix
     ./mise.nix

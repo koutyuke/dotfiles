@@ -23,6 +23,7 @@
         cc = "claude";
         cx = "codex";
         oc = "opencode2";
+        hd = "herdr";
 
         # git
         g = "git";
