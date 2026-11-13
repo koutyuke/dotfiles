@@ -12,10 +12,15 @@
         input = "yomiyasu-skills";
         subdir = "skills";
       };
+      i-have-adhd = {
+        input = "i-have-adhd-skills";
+        subdir = "skills";
+      };
     };
 
     skills = {
       enable = [
+        "i-have-adhd"
         "yomiyasu"
       ];
       explicit = {
