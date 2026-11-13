@@ -275,6 +275,22 @@
         "type": "github"
       }
     },
+    "i-have-adhd-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791734634,
+        "narHash": "sha256-GTqrnZxQvzo/ogAuUrffkOaMK1BYm/4rAZsnfmDt7DU=",
+        "owner": "ayghri",
+        "repo": "i-have-adhd",
+        "rev": "1ecea1993b7fce257ffbd686c070948b5e07eda6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ayghri",
+        "repo": "i-have-adhd",
+        "type": "github"
+      }
+    },
     "koutyuke-skills": {
       "flake": false,
       "locked": {
@@ -516,6 +532,7 @@
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager_2",
+        "i-have-adhd-skills": "i-have-adhd-skills",
         "koutyuke-skills": "koutyuke-skills",
         "llm-agents": "llm-agents",
         "mattpocock-skills": "mattpocock-skills",
@@ -602,11 +619,11 @@
     "yomiyasu-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1792238191,
-        "narHash": "sha256-cvZgUFMYWVJ2yuYmbDCR+jzO9n2qEOiDU++VfKPi1c8=",
+        "lastModified": 1794443311,
+        "narHash": "sha256-5CVfVx2cNxOdW8uKOdo3Gjs8zJrNYdBFqwR/qBg/Gpk=",
         "owner": "nanaism",
         "repo": "yomiyasu",
-        "rev": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff",
+        "rev": "db78b9bc5e868549b517a037df7a4d1c93edac23",
         "type": "github"
       },
       "original": {

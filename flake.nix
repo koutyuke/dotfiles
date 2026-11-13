@@ -47,6 +47,10 @@
       url = "github:nanaism/yomiyasu";
       flake = false;
     };
+    i-have-adhd-skills = {
+      url = "github:ayghri/i-have-adhd";
+      flake = false;
+    };
   };
 
   outputs =
