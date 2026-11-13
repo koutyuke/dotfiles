@@ -29,6 +29,7 @@
         name = "ollama";
         restart_service = "changed";
       }
+      "xcode-build-server"
     ];
     casks = [
       "aldente"
